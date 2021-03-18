@@ -33,13 +33,13 @@
           <form action="index.php" method="get">
               <input type="hidden" name="page" value="mnt_usuario"/>
               <input type="hidden" name="mode" value="UPD" />
-              <input type="hidden" name="invPrdId" value={{usercod}} />
+              <input type="hidden" name="usercod" value={{usercod}} />
               <button type="submit">Editar</button>
           </form>
           <form action="index.php" method="get">
               <input type="hidden" name="page" value="mnt_usuario"/>
               <input type="hidden" name="mode" value="DEL" />
-              <input type="hidden" name="invPrdId" value={{usercod}} />
+              <input type="hidden" name="usercod" value={{usercod}} />
               <button type="submit">Eliminar</button>
           </form>
         </td>

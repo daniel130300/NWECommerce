@@ -43,54 +43,6 @@
         }
     }
 
-    public static function validarCampoVacío($field)
-    {
-        if (preg_match('/^\s*$/', $field)) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public static function validarCorreo($field)
-    {
-        if (filter_var($field, FILTER_VALIDATE_EMAIL)) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public static function validarSoloNumeros($field)
-    {
-        if (!preg_match('/^[0-9]+$/', $field)) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public static function validarSoloLetras($field)
-    {
-        if (!preg_match ("/^[a-zA-Z\s]+$/", $field)) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
 
     private function __construct()
     {
