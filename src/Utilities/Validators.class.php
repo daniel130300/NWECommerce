@@ -18,31 +18,6 @@ class Validators {
         return preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,32}$/", $valor) && true;
     }
 
-    public static function validarSoloNumeros($field)
-    {
-        if (!preg_match('/^[0-9]+$/', $field)) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public static function validarSoloLetras($field)
-    {
-        if (!preg_match ("/^[a-zA-Z\s]+$/", $field)) 
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-
     private function __construct()
     {
         

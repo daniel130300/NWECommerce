@@ -5,7 +5,7 @@
     </section>
     <section class="depth-1 py-5 row col-12 col-m-8 offset-m-2 col-xl-6 offset-xl-3">
       <div class="row">
-        <label clhtass="col-12 col-m-4" for="txtEmail">Correo Electrónico</label>
+        <label class="col-12 col-m-4" for="txtEmail">Correo Electrónico</label>
         <div class="col-12 col-m-8">
           <input class="width-full" type="email" id="txtEmail" name="txtEmail" value="{{txtEmail}}" />
         </div>

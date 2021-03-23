@@ -38,7 +38,7 @@ abstract class PrivateController extends PublicController
             throw new PrivateNoLoggedException();
         }
     }
-    protected function isFeatureAutorized($feature) :bool
+    protected function isFeatureAutorized($feature) :boolean
     {
         return \Utilities\Security::isAuthorized(
             \Utilities\Security::getUserId(),

@@ -6,7 +6,6 @@ if (version_compare(phpversion(), '7.4.0', '<')) {
 } else {
     define('PASSWORD_ALGORITHM', '2y');  //BCRYPT
 }
-
 /*
 usercod     bigint(10) AI PK
 useremail   varchar(80)
@@ -19,13 +18,14 @@ userest     char(3)
 useractcod  varchar(128)
 userpswdchg varchar(128)
 usertipo    char(3)
-*/
+
+ */
 
 use Exception;
 
 class Security extends \Dao\Table
 {
-    static public function insertUsuario($email, $password)
+    static public function newUsuario($email, $password)
     {
         if (!\Utilities\Validators::IsValidEmail($email)) {
             throw new Exception("Correo no es válido");
@@ -51,7 +51,7 @@ class Security extends \Dao\Table
         $newUser["useractcod"] = hash("sha256", $email.time());
         $newUser["usertipo"] = UsuarioTipo::PUBLICO;
 
-        $sqlIns = "INSERT INTO `usuarios` (`useremail`, `username`, `userpswd`,
+        $sqlIns = "INSERT INTO `usuario` (`useremail`, `username`, `userpswd`,
             `userfching`, `userpswdest`, `userpswdexp`, `userest`, `useractcod`,
             `userpswdchg`, `usertipo`)
             VALUES
@@ -60,11 +60,12 @@ class Security extends \Dao\Table
             now(), :usertipo);";
 
         return self::executeNonQuery($sqlIns, $newUser);
+
     }
 
     static public function getUsuarioByEmail($email)
     {
-        $sqlstr = "SELECT * from `usuarios` where `useremail` = :useremail ;";
+        $sqlstr = "SELECT * from `usuario` where `useremail` = :useremail ;";
         $params = array("useremail"=>$email);
 
         return self::obtenerUnRegistro($sqlstr, $params);
@@ -198,5 +199,6 @@ class Security extends \Dao\Table
     {
     }
 }
+
 
 ?>
