@@ -2,7 +2,7 @@
 
 namespace Controllers\MntUsuarios;
 
-class Usuarios extends \Controllers\PrivateController
+class Usuarios extends \Controllers\PublicController
 {
     public function __construct()
     {

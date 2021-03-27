@@ -6,7 +6,7 @@ class Usuarios extends \Dao\Table
 {
     public static function getAll()
     {
-        return self::obtenerRegistros("SELECT * from usuario;", array());
+        return self::obtenerRegistros("SELECT * from usuarios;", array());
     }
 
     public static function getOne($usercod)

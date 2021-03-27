@@ -6,56 +6,32 @@ class Usuarios extends \Dao\Table
 {
     public static function getAll()
     {
-        return self::obtenerRegistros("SELECT * from usuarios;", array());
+        return self::obtenerRegistros("SELECT * FROM usuarios;", array());
     }
 
-    public static function getOne($usercod)
+    public static function getOne($UsuarioId)
     {
-        $sqlstr = "SELECT * FROM usuarios WHERE usercod = :usercod;";
-        return self::obtenerUnRegistro($sqlstr, array("usercod"=>$usercod));
+        $sqlstr = "SELECT * FROM usuarios WHERE UsuarioId = :UsuarioId;";
+        return self::obtenerUnRegistro($sqlstr, array("UsuarioId"=>$UsuarioId));
     }
 
-    public static function insert($useremail, $username, $userpswd, $userpswdest, $userpswdexp,
-    $userest, $useractcod, $usertipo)
+    public static function insert($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioPswdEst, $UsuarioPswdExp,
+    $UsuarioEst, $UsuarioActCod, $UsuarioTipo)
     {
-        $insstr = "INSERT INTO `usuarios` (`useremail`, `username`, `userpswd`,
-            `userfching`, `userpswdest`, `userpswdexp`, `userest`, `useractcod`,
-            `userpswdchg`, `usertipo`)
+        $insstr = "INSERT INTO `usuarios` (`UsuarioEmail`, `UsuarioNombre`, `UsuarioPswd`,
+            `UsuarioFching`, `UsuarioPswdEst`, `UsuarioPswdExp`, `UsuarioEst`, `UsuarioActCod`,
+            `UsuarioPswdChg`, `UsuarioTipo`)
             VALUES
-            (:useremail, :username, :userpswd, now(), :userpswdest, 
-            :userpswdexp, :userest, :useractcod, now(), :usertipo);";
+            (:UsuarioEmail, :UsuarioNombre, :UsuarioPswd, now(), :UsuarioPswdEst, 
+            :UsuarioPswdExp, :UsuarioEst, :UsuarioActCod, now(), :UsuarioTipo);";
 
         return self::executeNonQuery(
             $insstr,
-            array("useremail"=>$useremail, "username"=>$username, "userpswd"=>$userpswd, 
-            "userpswdest"=>$userpswdest, "userpswdexp"=>$userpswdexp, "userest"=>$userest,
-            "useractcod"=>$useractcod, "usertipo"=>$usertipo)
+            array("UsuarioEmail"=>$UsuarioEmail, "UsuarioNombre"=>$UsuarioNombre, "UsuarioPswd"=>$UsuarioPswd, 
+            "UsuarioPswdEst"=>$UsuarioPswdEst, "UsuarioPswdExp"=>$UsuarioPswdExp, "UsuarioEst"=>$UsuarioEst,
+            "UsuarioActCod"=>$UsuarioActCod, "UsuarioTipo"=>$UsuarioTipo)
         );
     }
-    
-    public static function update($invPrdBrCod, $invPrdCodInt, $invPrdDsc, $invPrdTip, $invPrdEst, 
-    $invPrdFactor, $invPrdVnd, $invPrdId)
-    {
-        $updsql = "update productos set invPrdBrCod = :invPrdBrCod, invPrdCodInt = :invPrdCodInt, 
-        invPrdDsc = :invPrdDsc, invPrdTip = :invPrdTip, invPrdEst = :invPrdEst, 
-        invPrdFactor = :invPrdFactor, invPrdVnd = :invPrdVnd where invPrdId = :invPrdId;";
-        return self::executeNonQuery(
-            $updsql,
-            array("invPrdBrCod"=>$invPrdBrCod, "invPrdCodInt"=>$invPrdCodInt, "invPrdDsc"=>$invPrdDsc, 
-            "invPrdTip"=>$invPrdTip, "invPrdEst"=>$invPrdEst, "invPrdFactor"=>$invPrdFactor, 
-            "invPrdVnd"=>$invPrdVnd, "invPrdId"=>$invPrdId)
-        );
-    }
-
-    public static function delete($invPrdId)
-    {
-        $delsql = "delete from productos where invPrdId=:invPrdId;";
-        return self::executeNonQuery(
-            $delsql,
-            array("invPrdId" => $invPrdId)
-        );
-    }
-
 }
 
 ?>

@@ -4,7 +4,7 @@ namespace Controllers\MntUsuarios;
 
 use Dao\Dao;
 
-class Usuario extends \Controllers\PrivateController
+class Usuario extends \Controllers\PublicController
 {
     public function __construct()
     {

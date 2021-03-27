@@ -25,62 +25,57 @@ use Exception;
 
 class Security extends \Dao\Table
 {
-    static public function newUsuario($email, $password)
+    static public function newUsuario($UsuarioEmail, $UsuarioPswd)
     {
-        if (!\Utilities\Validators::IsValidEmail($email)) {
+        if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) {
             throw new Exception("Correo no es válido");
         }
-        if (!\Utilities\Validators::IsValidPassword($password)) {
+        if (!\Utilities\Validators::IsValidPassword($UsuarioPswd)) {
             throw new Exception("Contraseña debe ser almenos 8 caracteres, 1 número, 1 mayúscula, 1 símbolo especial");
         }
 
         $newUser = self::_usuarioStruct();
         //Tratamiento de la Contraseña
-        $hashedPassword = self::_hashPassword($password);
+        $hashedPassword = self::_hashPassword($UsuarioPswd);
 
-        unset($newUser["usercod"]);
-        unset($newUser["userfching"]);
-        unset($newUser["userpswdchg"]);
+        unset($newUser["UsuarioId"]);
+        unset($newUser["UsuarioFching"]);
+        unset($newUser["UsuarioPswdChg"]);
 
-        $newUser["useremail"] = $email;
-        $newUser["username"] = "John Doe";
-        $newUser["userpswd"] = $hashedPassword;
-        $newUser["userpswdest"] = Estados::ACTIVO;
-        $newUser["userpswdexp"] = date('Y-m-d', time() + 7776000);  //(3*30*24*60*60) (m d h mi s)
-        $newUser["userest"] = Estados::ACTIVO;
-        $newUser["useractcod"] = hash("sha256", $email.time());
-        $newUser["usertipo"] = UsuarioTipo::PUBLICO;
+        $newUser["UsuarioEmail"] = $UsuarioEmail;
+        $newUser["UsuarioNombre"] = "John Doe";
+        $newUser["UsuarioPswd"] = $hashedPassword;
+        $newUser["UsuarioPswdEst"] = Estados::ACTIVO;
+        $newUser["UsuarioPswdExp"] = date('Y-m-d', time() + 7776000);  //(3*30*24*60*60) (m d h mi s)
+        $newUser["UsuarioEst"] = Estados::ACTIVO;
+        $newUser["UsuarioActCod"] = hash("sha256", $UsuarioEmail.time());
+        $newUser["UsuarioTipo"] = UsuarioTipo::PUBLICO;
 
-        $sqlIns = "INSERT INTO `usuario` (`useremail`, `username`, `userpswd`,
-            `userfching`, `userpswdest`, `userpswdexp`, `userest`, `useractcod`,
-            `userpswdchg`, `usertipo`)
+        $sqlIns = "INSERT INTO `usuarios` (`UsuarioEmail`, `UsuarioNombre`, `UsuarioPswd`,
+            `UsuarioFching`, `UsuarioPswdEst`, `UsuarioPswdExp`, `UsuarioEst`, `UsuarioActCod`,
+            `UsuarioPswdChg`, `UsuarioTipo`)
             VALUES
-            ( :useremail, :username, :userpswd,
-            now(), :userpswdest, :userpswdexp, :userest, :useractcod,
-            now(), :usertipo);";
+            ( :UsuarioEmail, :UsuarioNombre, :UsuarioPswd,
+            now(), :UsuarioPswdEst, :UsuarioPswdExp, :UsuarioEst, :UsuarioActCod,
+            now(), :UsuarioTipo);";
 
         return self::executeNonQuery($sqlIns, $newUser);
 
     }
 
-    static public function getUsuarioByEmail($email)
+    static public function getUsuarioByEmail($UsuarioEmail)
     {
-        $sqlstr = "SELECT * from `usuario` where `useremail` = :useremail ;";
-        $params = array("useremail"=>$email);
+        $sqlstr = "SELECT * from `usuarios` where `UsuarioEmail` = :UsuarioEmail ;";
+        $params = array("UsuarioEmail"=>$UsuarioEmail);
 
         return self::obtenerUnRegistro($sqlstr, $params);
     }
     
-    static private function _saltPassword($password)
+    static private function _saltPassword($UsuarioPswd)
     {
-        /*if ($salt % 2 == 0) {
-            return $password . $salt;
-        }
-        return $salt . $password
-        */
         return hash_hmac(
             "sha256",
-            $password,
+            $UsuarioPswd,
             \Utilities\Context::getContextByKey("PWD_HASH")
         );
     }
@@ -102,90 +97,89 @@ class Security extends \Dao\Table
     static private function _usuarioStruct()
     {
         return array(
-            "usercod"      => "",
-            "useremail"    => "",
-            "username"     => "",
-            "userpswd"     => "",
-            "userfching"   => "",
-            "userpswdest"  => "",
-            "userpswdexp"  => "",
-            "userest"      => "",
-            "useractcod"   => "",
-            "userpswdchg"  => "",
-            "usertipo"     => "",
+            "UsuarioId"      => "",
+            "UsuarioEmail"    => "",
+            "UsuarioNombre"     => "",
+            "UsuarioPswd"     => "",
+            "UsuarioFching"   => "",
+            "UsuarioPswdEst"  => "",
+            "UsuarioPswdExp"  => "",
+            "UsuarioEst"      => "",
+            "UsuarioActCod"   => "",
+            "UsuarioPswdChg"  => "",
+            "UsuarioTipo"     => "",
         );
     }
 
-    static public function getFeature($fncod)
+    static public function getFeature($FuncionId)
     {
-        $sqlstr = "SELECT * from funciones where fncod=:fncod;";
-        $featuresList = self::obtenerRegistros($sqlstr, array("fncod"=>$fncod));
+        $sqlstr = "SELECT * from funciones where FuncionId=:FuncionId;";
+        $featuresList = self::obtenerRegistros($sqlstr, array("FuncionId"=>$FuncionId));
         return count($featuresList) > 0;
     }
 
-    static public function addNewFeature($fncod, $fndsc, $fnest, $fntyp )
+    static public function addNewFeature($FuncionId, $FuncionDsc, $FuncionEst, $FuncionTipo)
     {
-        $sqlins = "INSERT INTO `funciones` (`fncod`, `fndsc`, `fnest`, `fntyp`)
-            VALUES (:fncod , :fndsc , :fnest , :fntyp );";
+        $sqlins = "INSERT INTO `funciones` (`FuncionId`, `FuncionDsc`, `FuncionEst`, `FuncionTipo`)
+            VALUES (:FuncionId , :FuncionDsc , :FuncionEst , :FuncionTipo);";
 
         return self::executeNonQuery(
             $sqlins,
             array(
-                "fncod" => $fncod,
-                "fndsc" => $fndsc,
-                "fnest" => $fnest,
-                "fntyp" => $fntyp
+                "FuncionId" => $FuncionId,
+                "FuncionDsc" => $FuncionDsc,
+                "FuncionEst" => $FuncionEst,
+                "FuncionTipo" => $FuncionTipo
             )
         );
     }
 
-    static public function getFeatureByUsuario($userCod, $fncod)
+    static public function getFeatureByUsuario($UsuarioId, $FuncionId)
     {
-        $sqlstr = "select * from
-    funciones_roles a inner join roles_usuarios b on a.rolescod = b.rolescod
-    where a.fnrolest = 'ACT' and b.usercod=:usercod and a.fncod=:fncod limit 1;";
+        $sqlstr = "select * from funcionesroles a inner join rolesusuarios b on a.RolId = b.RolId 
+        where a.FuncionRolEst = 'ACT' and b.UsuarioId=:UsuarioId and a.FuncionId=:FuncionId limit 1;";
         $resultados = self::obtenerRegistros(
             $sqlstr,
             array(
-                "usercod"=> $userCod,
-                "fncod" => $fncod
+                "UsuarioId"=> $UsuarioId,
+                "FuncionId" => $FuncionId
             )
         );
         return count($resultados) > 0;
     }
 
-    static public function getRol($rolescod)
+    static public function getRol($RolId)
     {
-        $sqlstr = "SELECT * from roles where rolescod=:rolescod;";
-        $featuresList = self::obtenerRegistros($sqlstr, array("rolescod" => $rolescod));
+        $sqlstr = "SELECT * from roles where RolId=:RolId;";
+        $featuresList = self::obtenerRegistros($sqlstr, array("RolId" => $RolId));
         return count($featuresList) > 0;
     }
 
-    static public function addNewRol($rolescod, $rolesdsc, $rolesest)
+    static public function addNewRol($RolId, $RolDsc, $RolEst)
     {
-        $sqlins = "INSERT INTO `roles` (`rolescod`, `rolesdsc`, `rolesest`)
-    VALUES (:rolescod, :rolesdsc, :rolesest);";
+        $sqlins = "INSERT INTO `roles` (`RolId`, `RolDsc`, `RolEst`)
+    VALUES (:RolId, :RolDsc, :RolEst);";
 
         return self::executeNonQuery(
             $sqlins,
             array(
-                "rolescod" => $rolescod,
-                "rolesdsc" => $rolesdsc,
-                "rolesest" => $rolesest
+                "RolId" => $RolId,
+                "RolDsc" => $RolDsc,
+                "RolEst" => $RolEst
             )
         );
     }
 
-    static public function getRolesByUsuario($userCod, $rolescod)
+    static public function getRolesByUsuario($UsuarioId, $RolId)
     {
         $sqlstr = "select * from roles a inner join
-        roles_usuarios b on a.rolescod = b.rolescod where a.rolesest = 'ACT'
-        and b.usercod=:usercod and a.rolescod=:rolescod limit 1;";
+        rolesusuarios b on a.RolId = b.RolId where a.RolEst = 'ACT'
+        and b.UsuarioId=:UsuarioId and a.RolId=:RolId limit 1;";
         $resultados = self::obtenerRegistros(
             $sqlstr,
             array(
-                "usercod" => $userCod,
-                "rolescod" => $rolescod
+                "UsuarioId" => $UsuarioId,
+                "RolId" => $RolId
             )
         );
         return count($resultados) > 0;

@@ -1,8 +1,6 @@
+
 <h1>Gestión de Usuarios</h1>
 <button id="btnVolver">Volver</button>
-<section class="WWFilter">
-
-</section>
 <section class="WWList">
   <table>
     <thead>
@@ -65,3 +63,5 @@
         });
     });
 </script>
+
+
