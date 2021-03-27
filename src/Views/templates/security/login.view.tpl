@@ -1,4 +1,4 @@
-<section class="container-fluid">
+<section class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <div class="d-flex flex-row justify-content-center">
     <div class="col-lg-10">
       <div class="card my-5">
