@@ -40,6 +40,7 @@ class Usuario extends \Controllers\PublicController
     );
 
     private $disabled = "";
+    private $displayOnlyUpd = "";
     private $diplayonly= "";
     private $readonly = "";
     private $showaction= true;
@@ -72,7 +73,7 @@ class Usuario extends \Controllers\PublicController
                 switch ($this->mode)
                 {
                     case "INS":
-                        if (\Dao\Security\Security::insertUsuarioAdmin($this->UsuarioEmail, $this->UsuarioNombre, $this->UsuarioPswd, $this->UsuarioEst, $this->UsuarioTipo)) 
+                        if (\Dao\Security\Security::insertUsuarioAdmin($this->UsuarioEmail, $this->UsuarioNombre, $this->UsuarioPswd, $this->UsuarioEst)) 
                         {
                             \Utilities\Site::redirectToWithMsg(
                                 "index.php?page=mnt_usuarios",
@@ -165,7 +166,7 @@ class Usuario extends \Controllers\PublicController
             $this->aErrors[] = "El nombre no puede ir vacio";
         }
 
-        if(\Utilities\Validators::ValidarSoloLetras($this->UsuarioNombre))
+        if(!(\Utilities\Validators::ValidarSoloLetras($this->UsuarioNombre)))
         {
             $this->aErrors[] = "El nombre no es válido.";
         }
@@ -214,14 +215,18 @@ class Usuario extends \Controllers\PublicController
     {
         $this->UsuarioEst_ACT = ($this->UsuarioEst === "ACT") ? "selected" : "";
         $this->UsuarioEst_INA = ($this->UsuarioEst === "INA") ? "selected" : "";
-        $this->UsuarioTipo_PBL = ($this->UsuarioTipo === "PBL") ? "selected" : "";
+
         $this->UsuarioTipo_ADM = ($this->UsuarioTipo === "ADM") ? "selected" : "";
-        $this->UsaurioTipo_AUD = ($this->UsuarioTipo === "AUD") ? "selected" : "";
+        $this->UsuarioTipo_AUD = ($this->UsuarioTipo === "AUD") ? "selected" : "";
+        $this->UsuarioTipo_PBL = ($this->UsuarioTipo === "PBL") ? "selected" : "";
+
         $this->mode_dsc = sprintf(
             $this->mode_adsc[$this->mode],
             $this->UsuarioId,
             $this->UsuarioNombre
         );
+
+        $this->notDisplayIns = ($this->mode=="INS") ? false : true;
         $this->disabled = ($this->mode == "INS" || $this->mode =="DEL" || $this->mode =="DSP") ? "disabled" : "";
         $this->readonly = ($this->mode =="DEL" || $this->mode=="DSP") ? "readonly" : "";
         $this->allInfoDisplayed = ($this->mode =="DEL" || $this->mode=="DSP") ? true : false;

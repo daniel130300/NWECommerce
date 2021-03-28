@@ -14,7 +14,7 @@
 
     class Security extends \Dao\Table
     {
-        static public function newUsuario($UsuarioEmail, $UsuarioPswd)
+        static public function insertUsuarioCliente($UsuarioEmail, $UsuarioNombre, $UsuarioPswd)
         {
             if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) 
             {
@@ -34,7 +34,7 @@
             unset($usuario["UsuarioPswdChg"]);
 
             $usuario["UsuarioEmail"] = $UsuarioEmail;
-            $usuario["UsuarioNombre"] = "John Doe";
+            $usuario["UsuarioNombre"] = $UsuarioNombre;
             $usuario["UsuarioPswd"] = $hashedPassword;
             $usuario["UsuarioPswdEst"] = Estados::ACTIVO;
             $usuario["UsuarioPswdExp"] = date('Y-m-d', time() + 7776000);  //(3*30*24*60*60) (m d h mi s)
@@ -53,8 +53,7 @@
             return self::executeNonQuery($sqlIns, $usuario);
         }
 
-        static public function insertUsuarioAdmin($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioEst,
-        $UsuarioTipo)
+        static public function insertUsuarioAdmin($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioEst)
         {
             if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) 
             {
@@ -81,7 +80,7 @@
             $usuario["UsuarioPswdExp"] = date('Y-m-d', time() + 7776000);  //(3*30*24*60*60) (m d h mi s)
             $usuario["UsuarioEst"] = $UsuarioEst;
             $usuario["UsuarioActCod"] = hash("sha256", $UsuarioEmail.time());
-            $usuario["UsuarioTipo"] = $UsuarioTipo;
+            $usuario["UsuarioTipo"] = Estados::ACTIVO;
 
             $sqlIns = "INSERT INTO `usuarios` (`UsuarioEmail`, `UsuarioNombre`, `UsuarioPswd`,
                 `UsuarioFching`, `UsuarioPswdEst`, `UsuarioPswdExp`, `UsuarioEst`, `UsuarioActCod`,

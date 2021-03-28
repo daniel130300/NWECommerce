@@ -5,6 +5,20 @@
     </div>
     <div class="card-body"> 
       <form class="form" method="post" action="index.php?page=sec_register">
+
+        {{if errorGeneral}}
+          <div class="my-3 text-danger">{{errorGeneral}}</div>
+        {{endif errorGeneral}}
+
+        <div class="form-group">
+          <label for="txtNombre">Nombre completo</label>
+          <input type="text" class="form-control" id="txtNombre" name="txtNombre" value="{{txtNombre}}" placeholder="Ingrese su nombre completo">
+        </div>
+
+        {{if errorNombre}}
+          <div class="my-3 text-danger">{{errorNombre}}</div>
+        {{endif errorNombre}}
+
         <div class="form-group">
           <label for="txtEmail">Correo electrónico</label>
           <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{txtEmail}}" placeholder="Ingrese su correo">

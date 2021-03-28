@@ -20,7 +20,7 @@ class Validators {
 
     public static function ValidarSoloLetras($valor)
     {
-        return preg_match("/^[a-zA-Z\s]*$/", $valor) && false;  
+        return preg_match("/^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ\s]*$/", $valor);  
     }
 
     private function __construct()
