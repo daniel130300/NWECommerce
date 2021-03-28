@@ -47,9 +47,9 @@
   <main>
   {{{page_content}}}
   </main>
-  <footer class="py-5 bg-dark">
+  <footer class="py-4 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 text-center text-white">Todo los Derechos Reservados 2021</p>
     </div>
     <!-- /.container -->
   </footer>

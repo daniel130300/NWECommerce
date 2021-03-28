@@ -32,6 +32,20 @@ class Usuarios extends \Dao\Table
             "UsuarioActCod"=>$UsuarioActCod, "UsuarioTipo"=>$UsuarioTipo)
         );
     }
+
+    public static function update($invPrdBrCod, $invPrdCodInt, $invPrdDsc, $invPrdTip, $invPrdEst, 
+    $invPrdFactor, $invPrdVnd, $invPrdId)
+    {
+        $updsql = "update productos set invPrdBrCod = :invPrdBrCod, invPrdCodInt = :invPrdCodInt, 
+        invPrdDsc = :invPrdDsc, invPrdTip = :invPrdTip, invPrdEst = :invPrdEst, 
+        invPrdFactor = :invPrdFactor, invPrdVnd = :invPrdVnd where invPrdId = :invPrdId;";
+        return self::executeNonQuery(
+            $updsql,
+            array("invPrdBrCod"=>$invPrdBrCod, "invPrdCodInt"=>$invPrdCodInt, "invPrdDsc"=>$invPrdDsc, 
+            "invPrdTip"=>$invPrdTip, "invPrdEst"=>$invPrdEst, "invPrdFactor"=>$invPrdFactor, 
+            "invPrdVnd"=>$invPrdVnd, "invPrdId"=>$invPrdId)
+        );
+    }
 }
 
 ?>

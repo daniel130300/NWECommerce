@@ -18,6 +18,11 @@ class Validators {
         return preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,32}$/", $valor) && true;
     }
 
+    public static function ValidarSoloLetras($valor)
+    {
+        return preg_match("/^[a-zA-Z\s]*$/", $valor) && false;  
+    }
+
     private function __construct()
     {
         

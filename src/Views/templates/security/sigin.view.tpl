@@ -1,40 +1,37 @@
-<section class="container-fluid">
-  <div class="d-flex flex-row justify-content-center">
-    <div class="col-lg-10">
-      <div class="card my-5">
-        <div class="card-header">
-          <h3 class="text-center">Regístrate</h3>
+<section class="container vh-100 d-flex align-items-center justify-content-center">
+  <div class="card my-5 w-100">
+    <div class="card-header">
+      <h3 class="text-center">Regístrate</h3>
+    </div>
+    <div class="card-body"> 
+      <form class="form" method="post" action="index.php?page=sec_register">
+        <div class="form-group">
+          <label for="txtEmail">Correo electrónico</label>
+          <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{txtEmail}}" placeholder="Ingrese su correo">
         </div>
-        <div class="card-body"> 
-          <form class="form" method="post" action="index.php?page=sec_register">
-            <div class="form-group">
-              <label for="txtEmail">Correo Electrónico</label>
-              <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="{{txtEmail}}" placeholder="Ingrese su correo">
-            </div>
 
-            {{if errorEmail}}
-              <div class="my-3 text-danger">{{errorEmail}}</div>
-            {{endif errorEmail}}
+        {{if errorEmail}}
+          <div class="my-3 text-danger">{{errorEmail}}</div>
+        {{endif errorEmail}}
 
-            <div class="form-group">
-              <label for="txtPswd">Contraseña</label>
-              <input type="password" class="form-control" id="txtPswd" name="txtPswd" value="{{txtPswd}}" placeholder="Ingrese su contraseña">
-            </div>
-
-            {{if errorPswd}}
-              <div class="my-3 text-danger">{{errorPswd}}</div>
-            {{endif errorPswd}}
-
-            {{if generalError}}
-            <div class="my-3 text-danger">
-              {{generalError}}
-            </div>
-            {{endif generalError}}
-
-            <button type="submit" id="btnSignin" class="btn btn-primary">Crear cuenta</button>
-          </form>
+        <div class="form-group">
+          <label for="txtPswd">Contraseña</label>
+          <input type="password" class="form-control" id="txtPswd" name="txtPswd" value="{{txtPswd}}" placeholder="Ingrese su contraseña">
         </div>
-      </div>
-    </div>  
+
+        {{if errorPswd}}
+          <div class="my-3 text-danger">{{errorPswd}}</div>
+        {{endif errorPswd}}
+
+        {{if generalError}}
+        <div class="my-3 text-danger">
+          {{generalError}}
+        </div>
+        {{endif generalError}}
+
+        <button type="submit" id="btnSignin" class="btn btn-primary">Crear cuenta</button>
+      </form>
+    </div>
   </div>
 </section>
+
