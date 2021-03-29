@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link href="public/client/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
+  <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="public/client/css/shop-homepage.css" rel="stylesheet">  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   {{foreach SiteLinks}}
     <link rel="stylesheet" href="{{this}}" />
   {{endfor SiteLinks}}
@@ -28,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=index">Inicio</a>
+              <a class="nav-link" href="index.php?page=index"><i class="fas fa-home mx-2"></i>Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=index">Productos</a>
+              <a class="nav-link" href="index.php?page=index"><i class="fas fa-list-alt mx-2"></i>Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=sec_login">Iniciar sesión</a>
+              <a class="nav-link" href="index.php?page=sec_login"><i class="fas fa-sign-in-alt mx-2"></i>Iniciar sesión</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php?page=sec_register">Regístrate</a>
@@ -54,8 +53,8 @@
     <!-- /.container -->
   </footer>
   <!-- Bootstrap core JavaScript -->
-  <script src="public/client/vendor/jquery/jquery.min.js"></script>
-  <script src="public/client/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/vendor/jquery/jquery.min.js"></script>
+  <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   {{foreach EndScripts}}
     <script src="{{this}}"></script>
   {{endfor EndScripts}}

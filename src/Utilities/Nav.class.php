@@ -24,6 +24,7 @@
             {
                 $tmpNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_admin",
+                    "nav_icon"=>"fas fa-home mx-2",
                     "nav_label"=>"Inicio"
                 );
             }
@@ -32,6 +33,7 @@
             {
                 $tmpNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=client_client",
+                    "nav_icon"=>"fas fa-home mx-2",
                     "nav_label"=>"Inicio"
                 );
             }
@@ -40,7 +42,8 @@
             {
                 $tmpNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_usuarios",
-                    "nav_label"=>"Usuarios"
+                    "nav_icon"=>"fas fa-users mx-2",
+                    "nav_label"=>"Gestión de Usuarios"
                 );
             }
             

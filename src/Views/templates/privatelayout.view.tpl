@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{SITE_TITLE}}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link href="public/client/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
+  <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="public/client/css/shop-homepage.css" rel="stylesheet">  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   {{foreach SiteLinks}}
     <link rel="stylesheet" href="{{this}}" />
   {{endfor SiteLinks}}
@@ -32,7 +31,7 @@
 
             {{foreach NAVIGATION}}
             <li class="nav-item">
-              <a class="nav-link" href="{{nav_url}}">{{nav_label}}</a>
+              <a class="nav-link" href="{{nav_url}}"><i class="{{nav_icon}}"></i>{{nav_label}}</a>
             </li>
             {{endfor NAVIGATION}}
             
@@ -40,23 +39,19 @@
             <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-user mx-2"></i>
                   {{with login}}
                     {{userName}}
                   {{endwith login}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-                    <a class="dropdown-item" href="index.php?page=sec_logout">Salir</a>
+                    <a class="dropdown-item" href="index.php?page=sec_logout"> <i class="fas fa-sign-out-alt mx-2"></i>Salir</a>
                 </div>
             </li>
         </ul>
-          
-
-        
         </div>
       </div>
     </nav>
-
-
   </header>
   <main>
   {{{page_content}}}
@@ -65,11 +60,9 @@
     <div class="container">
       <p class="m-0 text-center text-white">Todo los Derechos Reservados 2021</p>
     </div>
-    <!-- /.container -->
   </footer>
-  <!-- Bootstrap core JavaScript -->
-  <script src="public/client/vendor/jquery/jquery.min.js"></script>
-  <script src="public/client/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/vendor/jquery/jquery.min.js"></script>
+  <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   {{foreach EndScripts}}
     <script src="{{this}}"></script>
   {{endfor EndScripts}}
