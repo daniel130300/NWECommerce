@@ -29,7 +29,7 @@
 
 <section class="container-fluid" id="productos_recientes">
 
-    <h3 class="my-4 text-center">Productos Recientes</h3>
+    <h4 class="my-4 text-center p-3 mb-2 bg-light text-dark">Productos Recientes</h4>
 
     <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">

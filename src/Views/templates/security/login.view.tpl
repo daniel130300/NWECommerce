@@ -1,4 +1,4 @@
-<section class="container vh-100 d-flex align-items-center justify-content-center">
+<section class="container vh-100 d-flex align-items-center justify-content-center" style="width: 100% !important;">
   <div class="card my-5 w-100">
     <div class="card-header">
       <h3 class="text-center">Iniciar sesión</h3>

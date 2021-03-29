@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="public/client/css/shop-homepage.css" rel="stylesheet">  
+  <link href="public/css/style.css" rel="stylesheet">  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   {{foreach SiteLinks}}
     <link rel="stylesheet" href="{{this}}" />
@@ -19,7 +19,7 @@
 <body>
   <header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">{{SITE_TITLE}}</a>
 
@@ -56,9 +56,9 @@
   <main>
   {{{page_content}}}
   </main>
-  <footer class="py-4 bg-dark">
+  <footer class="py-4 bg-light">
     <div class="container">
-      <p class="m-0 text-center text-white">Todo los Derechos Reservados 2021</p>
+      <p class="m-0 text-center text-dark">Todo los Derechos Reservados 2021</p>
     </div>
   </footer>
   <script src="public/vendor/jquery/jquery.min.js"></script>
