@@ -1,1 +1,1 @@
-<h2>Administrador</h2>
+<h2 class="text-center vh-100">Administrador</h2>

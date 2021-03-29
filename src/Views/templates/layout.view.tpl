@@ -18,7 +18,7 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
           {{SITE_TITLE}}
@@ -48,9 +48,9 @@
   <main>
   {{{page_content}}}
   </main>
-  <footer class="py-4 bg-light">
+  <footer class="py-4 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-black">Todo los Derechos Reservados 2021</p>
+      <p class="m-0 text-center text-white">Todo los Derechos Reservados 2021</p>
     </div>
     <!-- /.container -->
   </footer>
