@@ -51,9 +51,9 @@ class Login extends \Controllers\PublicController
                     }
                     if (! $this->hasError) {
                         \Utilities\Security::login(
-                            $dbUser["usercod"],
-                            $dbUser["username"],
-                            $dbUser["useremail"]
+                            $dbUser["UsuarioId"],
+                            $dbUser["UsuarioNombre"],
+                            $dbUser["UsuarioEmail"]
                         );
                         if (\Utilities\Context::getContextByKey("redirto") !== "") {
                             \Utilities\Site::redirectTo(

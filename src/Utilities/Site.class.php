@@ -13,8 +13,21 @@ class Site
     public static function getPageRequest()
     {
         $pageRequest = "index";
-        if (\Utilities\Security::isLogged()) {
-            $pageRequest = "admin\\admin";
+        if (\Utilities\Security::isLogged()) 
+        {
+            $usuario = \Dao\Security\Security::getUsuariobyId(\Utilities\Security::getUserId());
+            
+            if(!empty($usuario))
+            {
+                if($usuario["UsuarioTipo"] !== "PBL")
+                {
+                    $pageRequest = "admin\\admin";
+                }
+                else
+                {
+                    $pageRequest = "client\\client";
+                }
+            }
         }
         if (isset($_GET["page"])) {
             $pageRequest = str_replace(array("_", "-", "."), "\\", $_GET["page"]);

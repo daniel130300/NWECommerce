@@ -4,7 +4,7 @@
       <h3 class="text-center">{{mode_dsc}}</h3>
     </div>
     <div class="card-body"> 
-      <form class="form" method="post" action="index.php?page=mnt_usuario&mode={{mode}}&UsuarioId={{UsuarioId}}">
+      <form class="form" method="post" action="index.php?page=admin_usuario&mode={{mode}}&UsuarioId={{UsuarioId}}">
 
         <div class="form-group col-md-2">
           <label for="UsuarioId">Código</label>
@@ -69,14 +69,14 @@
           <input type="text" readonly class="form-control" id="UsuarioPswdChg" name="UsuarioPswdChg" value="{{UsuarioPswdChg}}" maxlength="128"/>
         </div>
         {{endif allInfoDisplayed}}
-
+        
         <div class="form-group col-md-4">
           <label for="UsuarioTipo">Tipo de usuario</label>
           <br/>
-          <select class="form-control" id="UsuarioTipo" name="UsuarioTipo"{{if readonly}}disabled{{endif readonly}}>
-            <option value="ADM" {{UsuarioTipo_ADM}}>Administrador</option>
-            <option value="AUD" {{Usuarioipo_AUD}}>Auditor</option>
-            <option value="PBL" {{UsuarioTipo_PBL}}>Público</option>
+          <select class="form-control" id="UsuarioTipo" name="UsuarioTipo" {{if readonly}}disabled{{endif readonly}}>
+              <option value="ADM" {{UsuarioTipo_ADM}}>Administrador</option>
+              <option value="AUD" {{UsuarioTipo_AUD}}>Auditor</option>
+              <option value="PBL" {{UsuarioTipo_PBL}}>Público</option>
           </select>
         </div>
 
@@ -104,7 +104,7 @@
       document.getElementById("btnCancelar").addEventListener("click", function(e){
         e.preventDefault();
         e.stopPropagation();
-        window.location.assign("index.php?page=mnt_usuarios");
+        window.location.assign("index.php?page=admin_usuarios");
       });
   });
 </script>

@@ -173,7 +173,7 @@
 
         public static function getUsuariobyId($UsuarioId)
         {
-            $sqlstr = "SELECT * FROM usuarios WHERE UsuarioId = :UsuarioId;";
+            $sqlstr = "SELECT * FROM usuarios WHERE UsuarioId = :UsuarioId LIMIT 1;";
             return self::obtenerUnRegistro($sqlstr, array("UsuarioId"=>$UsuarioId));
         }
 
@@ -288,10 +288,26 @@
                 )
             );
         }
+        
 
         static public function getRolesByUsuario($UsuarioId, $RolId)
         {
-            $sqlstr = "SELECT * FROM roles a INNER JOIN
+            $sqlstr = "SELECT * FROM roles a INNER JOIN 
+            rolesusuarios b ON a.RolId = b.RolId WHERE a.RolEst = 'ACT'
+            AND b.UsuarioId=:UsuarioId AND a.RolId=:RolId LIMIT 1;";
+            $resultados = self::obtenerRegistros(
+                $sqlstr,
+                array(
+                    "UsuarioId" => $UsuarioId,
+                    "RolId" => $RolId
+                )
+            );
+            return count($resultados) > 0;
+        }
+
+        static public function getFuncionesByRolesUsuario($UsuarioId, $RolId)
+        {
+            $sqlstr = "SELECT * FROM roles a INNER JOIN 
             rolesusuarios b ON a.RolId = b.RolId WHERE a.RolEst = 'ACT'
             AND b.UsuarioId=:UsuarioId AND a.RolId=:RolId LIMIT 1;";
             $resultados = self::obtenerRegistros(

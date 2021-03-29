@@ -1,9 +1,18 @@
 <?php
 
-    namespace Controllers\Mnt;
+    namespace Controllers\Admin;
 
-    class Usuarios extends \Controllers\PublicController
+    class Usuarios extends \Controllers\PrivateController
     {
+        public function __construct()
+        {
+            $userInRole = \Utilities\Security::isInRol(
+                \Utilities\Security::getUserId(),
+                "ADMIN"
+            );
+            parent::__construct();
+        }
+    
         private $UsuarioBusqueda = "";
         public function run() :void
         {
@@ -27,7 +36,7 @@
                 $dataview["items"] = \Dao\Mnt\Usuarios::getAll();
             }
             
-            \Views\Renderer::render("mnt/usuarios", $dataview);
+            \Views\Renderer::render("admin/usuarios", $dataview);
         } 
     }
 ?>

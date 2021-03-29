@@ -1,15 +1,15 @@
 <?php 
 
-namespace Controllers\Mnt;
+namespace Controllers\Admin;
 
-class Usuario extends \Controllers\PublicController
+class Usuario extends \Controllers\PrivateController
 {
     public function __construct()
     {
-        //$userInRole = \Utilities\Security::isInRol(
-        //    \Utilities\Security::getUserId(),
-        //    "ADMIN"
-        //);
+        $userInRole = \Utilities\Security::isInRol(
+            \Utilities\Security::getUserId(),
+            "ADMIN"
+        );
         parent::__construct();
     }
 
@@ -76,7 +76,7 @@ class Usuario extends \Controllers\PublicController
                         if (\Dao\Security\Security::insertUsuarioAdmin($this->UsuarioEmail, $this->UsuarioNombre, $this->UsuarioPswd, $this->UsuarioEst)) 
                         {
                             \Utilities\Site::redirectToWithMsg(
-                                "index.php?page=mnt_usuarios",
+                                "index.php?page=admin_usuarios",
                                 "¡Usuario Agregado Satisfactoriamente!"
                             );
                         }
@@ -88,7 +88,7 @@ class Usuario extends \Controllers\PublicController
                             if (\Dao\Security\Security::updateUsuarioAdmin($this->UsuarioId, $this->UsuarioEmail, $this->UsuarioNombre, $this->UsuarioEst, $this->UsuarioTipo)) 
                             {
                                 \Utilities\Site::redirectToWithMsg(
-                                    "index.php?page=mnt_usuarios",
+                                    "index.php?page=admin_usuarios",
                                     "¡Usuario Actualizado Satisfactoriamente!"
                                 );
                             }
@@ -99,7 +99,7 @@ class Usuario extends \Controllers\PublicController
                             $this->UsuarioEst, $this->UsuarioTipo)) 
                             {
                                 \Utilities\Site::redirectToWithMsg(
-                                    "index.php?page=mnt_usuarios",
+                                    "index.php?page=admin_usuarios",
                                     "¡Usuario Actualizado Satisfactoriamente!"
                                 );
                             }
@@ -110,7 +110,7 @@ class Usuario extends \Controllers\PublicController
                     case "DEL":
                         if (\DAO\Security\Security::deleteUsuarioAdmin($this->UsuarioId)) {
                             \Utilities\Site::redirectToWithMsg(
-                                "index.php?page=mnt_usuarios",
+                                "index.php?page=admin_usuarios",
                                 "¡Usuario Eliminado Satisfactoriamente!"
                             );
                         }
@@ -120,7 +120,7 @@ class Usuario extends \Controllers\PublicController
         }
 
         $dataview = get_object_vars($this);
-        \Views\Renderer::render("mnt/usuario", $dataview);
+        \Views\Renderer::render("admin/usuario", $dataview);
     }
 
     private function _load()

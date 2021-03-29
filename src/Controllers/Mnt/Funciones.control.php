@@ -2,7 +2,7 @@
 
 namespace Controllers\MntFunciones;
 
-class Funciones extends \Controllers\PrivateController
+class Funciones extends \Controllers\PublicController
 {
     public function __construct()
     {

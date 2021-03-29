@@ -3,7 +3,7 @@
   <h3 class="my-4 text-center">Gestión de Usuarios</h3>
   
   <div class="d-flex-inline">
-    <form method="POST" action="index.php?page=mnt_usuarios">
+    <form method="POST" action="index.php?page=admin_usuarios">
       <div class="form-row">
         <div class="col-8">
           <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" placeholder="Ingrese su busqueda">
@@ -36,7 +36,7 @@
           <tr>
             <td class="text-center align-middle">{{UsuarioId}}</td>
             <td class="text-center align-middle">{{UsuarioEmail}}</td>
-            <td class="text-center align-middle"><a href="index.php?page=mnt_usuario&mode=DSP&UsuarioId={{UsuarioId}}">{{UsuarioNombre}}</a></td>
+            <td class="text-center align-middle"><a href="index.php?page=admin_usuario&mode=DSP&UsuarioId={{UsuarioId}}">{{UsuarioNombre}}</a></td>
             <td class="text-center align-middle">{{UsuarioFching}}</td>
             <td class="text-center align-middle">{{UsuarioPswdEst}}</td>
             <td class="text-center align-middle">{{UsuarioPswdExp}}</td>
@@ -45,13 +45,13 @@
             <td class="text-center align-middle">{{UsuarioTipo}}</td>
             <td class="text-center align-middle">
               <form action="index.php" method="get">
-                  <input type="hidden" name="page" value="mnt_usuario"/>
+                  <input type="hidden" name="page" value="admin_usuario"/>
                   <input type="hidden" name="mode" value="UPD" />
                   <input type="hidden" name="UsuarioId" value={{UsuarioId}} />
                   <button type="submit" class="btn btn-primary my-1">Editar</button>
               </form>
               <form action="index.php" method="get">
-                  <input type="hidden" name="page" value="mnt_usuario"/>
+                  <input type="hidden" name="page" value="admin_usuario"/>
                   <input type="hidden" name="mode" value="DEL" />
                   <input type="hidden" name="UsuarioId" value={{UsuarioId}} />
                   <button type="submit" class="btn btn-danger my-1">Eliminar</button>
@@ -69,7 +69,7 @@
      document.getElementById("btnAdd").addEventListener("click", function (e) {
        e.preventDefault();
        e.stopPropagation();
-       window.location.assign("index.php?page=mnt_usuario&mode=INS&UsuarioId=0");
+       window.location.assign("index.php?page=admin_usuario&mode=INS&UsuarioId=0");
      });
    });
 </script>

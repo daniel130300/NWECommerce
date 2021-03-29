@@ -14,17 +14,38 @@
         {
             
         }
-
+        
         public static function setNavContext()
         {
-            /*
-            $tmpNavigation = array();
-            $UsuarioId = \Utilities\Security::getUserId();
-            if(\Utilities\Security::isAuthorized($UsuarioId, "Mnt"))
-            */
-        }
-        
+            $tmpNAVIGATION = array();
+            $userID = \Utilities\Security::getUserId();
+
+            if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Admin")) 
+            {
+                $tmpNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=admin_admin",
+                    "nav_label"=>"Inicio"
+                );
+            }
+
+            if (\Utilities\Security::isAuthorized($userID, "Controllers\Client\Client")) 
+            {
+                $tmpNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=client_client",
+                    "nav_label"=>"Inicio"
+                );
+            }
+
+            if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Usuarios")) 
+            {
+                $tmpNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=admin_usuarios",
+                    "nav_label"=>"Usuarios"
+                );
+            }
+            
+            \Utilities\Context::setContext("NAVIGATION", $tmpNAVIGATION);
+        } 
+
     }
-
-
 ?>
