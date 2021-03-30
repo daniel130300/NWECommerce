@@ -14,6 +14,11 @@
 
     class Security extends \Dao\Table
     {
+        public static function getAll()
+        {
+            return self::obtenerRegistros("SELECT * FROM usuarios;", array());
+        }
+
         static public function insertUsuarioCliente($UsuarioEmail, $UsuarioNombre, $UsuarioPswd)
         {
             if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) 
@@ -53,7 +58,7 @@
             return self::executeNonQuery($sqlIns, $usuario);
         }
 
-        static public function insertUsuarioAdmin($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioEst)
+        static public function insertUsuarioAdmin($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioTipo)
         {
             if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) 
             {
@@ -78,9 +83,9 @@
             $usuario["UsuarioPswd"] = $hashedPassword;
             $usuario["UsuarioPswdEst"] = Estados::ACTIVO;
             $usuario["UsuarioPswdExp"] = date('Y-m-d', time() + 7776000);  //(3*30*24*60*60) (m d h mi s)
-            $usuario["UsuarioEst"] = $UsuarioEst;
+            $usuario["UsuarioEst"] = Estados::ACTIVO;
             $usuario["UsuarioActCod"] = hash("sha256", $UsuarioEmail.time());
-            $usuario["UsuarioTipo"] = Estados::ACTIVO;
+            $usuario["UsuarioTipo"] = $UsuarioTipo;
 
             $sqlIns = "INSERT INTO `usuarios` (`UsuarioEmail`, `UsuarioNombre`, `UsuarioPswd`,
                 `UsuarioFching`, `UsuarioPswdEst`, `UsuarioPswdExp`, `UsuarioEst`, `UsuarioActCod`,

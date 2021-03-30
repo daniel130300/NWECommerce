@@ -19,7 +19,7 @@
         public function run() :void
         {
             $dataview = array();
-            
+
             if ($this->isPostBack()) 
             {   
                 $this->UsuarioBusqueda = isset($_POST["UsuarioBusqueda"]) ? $_POST["UsuarioBusqueda"] : "";
@@ -30,12 +30,12 @@
                 }
                 else
                 {
-                    $dataview["items"] = \Dao\Mnt\Usuarios::getAll();
+                    $dataview["items"] = \Dao\Security\Security::getAll();
                 }
             } 
             else
             {   
-                $dataview["items"] = \Dao\Mnt\Usuarios::getAll();
+                $dataview["items"] = \Dao\Security\Security::getAll();
             }
             
             \Views\Renderer::render("admin/usuarios", $dataview);
