@@ -6,17 +6,20 @@
     {
         public function __construct()
         {
+            
             $userInRole = \Utilities\Security::isInRol(
                 \Utilities\Security::getUserId(),
                 "ADMIN"
             );
+            
             parent::__construct();
         }
     
         private $UsuarioBusqueda = "";
         public function run() :void
         {
-
+            $dataview = array();
+            
             if ($this->isPostBack()) 
             {   
                 $this->UsuarioBusqueda = isset($_POST["UsuarioBusqueda"]) ? $_POST["UsuarioBusqueda"] : "";
@@ -32,7 +35,6 @@
             } 
             else
             {   
-                $dataview = array();
                 $dataview["items"] = \Dao\Mnt\Usuarios::getAll();
             }
             

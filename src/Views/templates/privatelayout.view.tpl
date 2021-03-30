@@ -31,7 +31,7 @@
 
             {{foreach NAVIGATION}}
             <li class="nav-item">
-              <a class="nav-link" href="{{nav_url}}"><i class="{{nav_icon}}"></i>{{nav_label}}</a>
+              <a class="nav-link" href="{{nav_url}}">{{if nav_icon}}<i class="{{nav_icon}}"></i>{{endif nav_icon}}{{nav_label}}</a>
             </li>
             {{endfor NAVIGATION}}
             

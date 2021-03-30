@@ -24,7 +24,7 @@
             {
                 $tmpNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_admin",
-                    "nav_icon"=>"fas fa-home mx-2",
+                    "nav_icon"=>"",
                     "nav_label"=>"Inicio"
                 );
             }
@@ -33,7 +33,7 @@
             {
                 $tmpNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=client_client",
-                    "nav_icon"=>"fas fa-home mx-2",
+                    "nav_icon"=>"",
                     "nav_label"=>"Inicio"
                 );
             }
@@ -42,8 +42,17 @@
             {
                 $tmpNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_usuarios",
-                    "nav_icon"=>"fas fa-users mx-2",
+                    "nav_icon"=>"",
                     "nav_label"=>"Gestión de Usuarios"
+                );
+            }
+
+            if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Categorias")) 
+            {
+                $tmpNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=admin_categorias",
+                    "nav_icon"=>"",
+                    "nav_label"=>"Gestión de Categorías"
                 );
             }
             

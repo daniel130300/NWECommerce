@@ -5,11 +5,13 @@ namespace Controllers\Admin;
 class Usuario extends \Controllers\PrivateController
 {
     public function __construct()
-    {
+    {   
+        
         $userInRole = \Utilities\Security::isInRol(
             \Utilities\Security::getUserId(),
             "ADMIN"
         );
+
         parent::__construct();
     }
 
@@ -39,9 +41,9 @@ class Usuario extends \Controllers\PrivateController
         "DSP" => "%s %s"
     );
 
+    private $notDisplayIns = false;
+    private $allInfoDisplayed = false;
     private $disabled = "";
-    private $displayOnlyUpd = "";
-    private $diplayonly= "";
     private $readonly = "";
     private $showaction= true;
 

@@ -52,14 +52,14 @@
         {{endif allInfoDisplayed}}
 
         {{if notDisplayIns}}
-        <div class="form-group col-md-4">
-          <label for="UsuarioEst">Estado del usuario</label>
-          <br/>
-          <select class="form-control" id="UsuarioEst" name="UsuarioEst" {{if readonly}}disabled{{endif readonly}}>
-              <option value="ACT" {{UsuarioEst_ACT}}>Activo</option>
-              <option value="INA" {{UsuarioEst_INA}}>Inactivo</option>
-          </select>
-        </div>
+          <div class="form-group col-md-4">
+            <label for="UsuarioEst">Estado del usuario</label>
+            <br/>
+            <select class="form-control" id="UsuarioEst" name="UsuarioEst" {{if readonly}}disabled{{endif readonly}}>
+                <option value="ACT" {{UsuarioEst_ACT}}>Activo</option>
+                <option value="INA" {{UsuarioEst_INA}}>Inactivo</option>
+            </select>
+          </div>
         {{endif notDisplayIns}}
 
         {{if allInfoDisplayed}}

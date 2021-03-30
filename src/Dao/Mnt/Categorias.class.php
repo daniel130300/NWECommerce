@@ -6,40 +6,49 @@ class Categorias extends \Dao\Table
 {
     public static function getAll()
     {
-        return self::obtenerRegistros("SELECT * from categorias;", array());
+        return self::obtenerRegistros("SELECT * FROM categorias;", array());
     }
 
-    public static function getOne($catid)
+    public static function getOne($CategoriaId)
     {
-        $sqlstr = "Select * from categorias where catid=:catid;";
-        return self::obtenerUnRegistro($sqlstr, array("catid"=>$catid));
+        $sqlstr = "SELECT * FROM categorias where CategoriaId=:CategoriaId;";
+        return self::obtenerUnRegistro($sqlstr, array("CategoriaId"=>$CategoriaId));
     }
 
-    public static function insert($catnom, $catest)
+    public static function insert($CategoriaNom, $CategoriaEst)
     {
-        $insstr = "insert into categorias (catnom, catest) values (:catnom, :catest);";
+        $insstr = "INSERT INTO categorias (CategoriaNom, CategoriaEst) VALUES (:CategoriaNom, :CategoriaEst);";
         return self::executeNonQuery(
             $insstr,
-            array("catnom"=>$catnom, "catest"=>$catest)
-        );
-    }
-    public static function update($catnom, $catest, $catid)
-    {
-        $updsql = "update categorias set catnom = :catnom , catest=:catest where catid=:catid;";
-        return self::executeNonQuery(
-            $updsql,
-            array("catnom" => $catnom, "catest" => $catest, "catid" => $catid)
-        );
-    }
-    public static function delete( $catid)
-    {
-        $delsql = "delete from categorias where catid=:catid;";
-        return self::executeNonQuery(
-            $delsql,
-            array( "catid" => $catid)
+            array("CategoriaNom"=>$CategoriaNom, "CategoriaEst"=>$CategoriaEst)
         );
     }
 
+    public static function update($CategoriaNom, $CategoriaEst, $CategoriaId)
+    {
+        $updsql = "UPDATE categorias SET CategoriaNom=:CategoriaNom, CategoriaEst=:CategoriaEst WHERE CategoriaId=:CategoriaId;";
+        return self::executeNonQuery(
+            $updsql,
+            array("CategoriaNom" => $CategoriaNom, "CategoriaEst" => $CategoriaEst, "CategoriaId" => $CategoriaId)
+        );
+    }
+
+    public static function delete($CategoriaId)
+    {
+        $delsql = "DELETE FROM categorias WHERE CategoriaId=:CategoriaId;";
+        return self::executeNonQuery(
+            $delsql,
+            array("CategoriaId" => $CategoriaId)
+        );
+    }
+
+    static public function searchCategorias($UsuarioBusqueda)
+    {
+        $sqlstr = "SELECT * FROM categorias WHERE CategoriaNom LIKE :UsuarioBusqueda
+        OR CategoriaEst LIKE :UsuarioBusqueda;";
+        
+        return self::obtenerRegistros($sqlstr, array("UsuarioBusqueda"=>"%".$UsuarioBusqueda."%"));
+    }
 }
 
 ?>
