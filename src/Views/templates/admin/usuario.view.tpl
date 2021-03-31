@@ -79,7 +79,7 @@
               <option value="PBL" {{UsuarioTipo_PBL}}>Público</option>
           </select>
         </div>
-
+        
         {{if hasErrors}}
         <section>
             <ul>
@@ -107,6 +107,8 @@
         window.location.assign("index.php?page=admin_usuarios");
       });
   });
+
+  $('select').selectpicker();
 </script>
 
 

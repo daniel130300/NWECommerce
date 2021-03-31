@@ -36,9 +36,9 @@ class Usuario extends \Controllers\PrivateController
     private $mode_dsc = "";
     private $mode_adsc = array(
         "INS" => "Nuevo Usuario",
-        "UPD" => "Editar %s %s",
-        "DEL" => "Eliminar %s %s",
-        "DSP" => "%s %s"
+        "UPD" => "Editar Código: %s Nombre: %s",
+        "DEL" => "Eliminar Código: %s Nombre: %s",
+        "DSP" => "Visualizar Código: %s Nombre: %s"
     );
 
     private $notDisplayIns = false;

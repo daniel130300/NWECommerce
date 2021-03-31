@@ -9,6 +9,13 @@
   <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="public/css/style.css" rel="stylesheet">  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
   {{foreach SiteLinks}}
     <link rel="stylesheet" href="{{this}}" />
   {{endfor SiteLinks}}
@@ -61,8 +68,10 @@
       <p class="m-0 text-center text-white">Todo los Derechos Reservados 2021</p>
     </div>
   </footer>
+
   <script src="public/vendor/jquery/jquery.min.js"></script>
   <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   {{foreach EndScripts}}
     <script src="{{this}}"></script>
   {{endfor EndScripts}}
