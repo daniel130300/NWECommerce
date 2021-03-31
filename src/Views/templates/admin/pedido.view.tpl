@@ -1,4 +1,4 @@
-<section class="container d-flex align-items-center justify-content-center vh-100">
+<section class="container d-flex align-items-center justify-content-center">
     <div class="card my-5 w-100">
       <div class="card-header">
         <h3 class="text-center">{{mode_dsc}}</h3>
@@ -33,25 +33,25 @@
           </div>
 
           <div class="form-group col-md-10">
-            <label for="VentaPagoEnvio">Pago del Envío</label>
-            <input type="text" class="form-control" readonly id="VentaPagoEnvio" name="VentaPagoEnvio" value="{{VentaPagoEnvio}}" maxlength="80">
+            <label for="VentaPagoEnvio">Pago del envio</label>
+            <input type="text" class="form-control" readonly id="VentaPagoEnvio" name="VentaTipoPago" value="{{VentaPagoEnvio}}" maxlength="80">
           </div>
 
           <div class="form-group col-md-10">
             <label for="UsuarioNombre">Nombre del Cliente</label>
-            <input type="text" class="form-control" readonly id="UsuarioNombre" name="UsuarioNombre" value="{{UsuarioNombre}" maxlength="80">
+            <input type="text" class="form-control" readonly id="UsuarioNombre" name="UsuarioNombre" value="{{UsuarioNombre}}" maxlength="80">
           </div>
 
           <div class="form-group col-md-10">
-            <label for="ClienteDirecion">Direccion del Cliente</label>
+            <label for="ClienteDireccion">Dirección del Cliente</label>
             <input type="text" class="form-control" readonly id="ClienteDireccion" name="ClienteDireccion" value="{{ClienteDireccion}}" maxlength="80">
           </div>
 
           <div class="form-group col-md-10">
-            <label for="ClienteTelefono">Telefono del Cliente</label>
+            <label for="ClienteTelefono">Télefono del Cliente</label>
             <input type="text" class="form-control" readonly id="ClienteTelefono" name="ClienteTelefono" value="{{ClienteTelefono}}" maxlength="80">
           </div>
-  
+         
           <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
           {{if showaction}}
             <button type="submit" class="btn btn-primary mt-2 mr-2" id="btnGuardar" name="btnGuardar">Cambiar Estado</button>
@@ -66,7 +66,7 @@
         document.getElementById("btnCancelar").addEventListener("click", function(e){
           e.preventDefault();
           e.stopPropagation();
-          window.location.assign("index.php?page=admin_categorias");
+          window.location.assign("index.php?page=admin_pedidos");
         });
     });
   </script>

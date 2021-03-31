@@ -28,8 +28,8 @@ class Pedido extends \Controllers\PublicController
 
     private $mode_dsc = "";
     private $mode_adsc = array(
-        "UPD" => "Editar Venta Código: %s Nombre del Cliente: %s",
-        "DSP" => "Visualizar Venta Código: %s Nombre del Cliente: %s"
+        "UPD" => "Editar Venta Código: %s, Nombre del Cliente: %s",
+        "DSP" => "Visualizar Venta Código: %s, Nombre del Cliente: %s"
     );
 
     private $readonly = "";
@@ -46,9 +46,6 @@ class Pedido extends \Controllers\PublicController
         if (!$this->isPostBack()) 
         {
             $this->_load();
-            $this->mode_dsc = $this->mode_adsc[$this->mode];
-           // var_dump($this->mode);
-            //die();
         } 
         else 
         { 

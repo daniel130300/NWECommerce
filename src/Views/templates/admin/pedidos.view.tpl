@@ -57,13 +57,3 @@
       </table>
     </div>
   </section>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () 
-    {
-        document.getElementById("btnAdd").addEventListener("click", function (e){
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.assign("index.php?page=admin_categoria&mode=INS&CategoriaId=0");
-        });
-     });
-  </script>
