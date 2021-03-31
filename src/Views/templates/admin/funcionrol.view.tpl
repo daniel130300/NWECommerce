@@ -33,11 +33,11 @@
           {{endif onlyDisplayIns}}
             
           {{if onlyDisplayIns}}
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-6">
             <label for="FuncionId2">Funciones</label>
             <br/>
             <select class="selectpicker" multiple data-live-search="true" id="FuncionId2" name="FuncionId2">
-              {{foreach fuciones}}
+              {{foreach funciones}}
                 <option value="{{FuncionId}}">{{FuncionDsc}}</option>
               {{endfor funciones}}
             </select>
