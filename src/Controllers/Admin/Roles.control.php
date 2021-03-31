@@ -1,9 +1,10 @@
 <?php 
 
-namespace Controllers\MntRoles;
+namespace Controllers\Admin;
 
-class Roles extends \Controllers\PrivateController
+class Roles extends \Controllers\PublicController
 {
+    /*
     public function __construct()
     {
         //$userInRole = \Utilities\Security::isInRol(
@@ -12,12 +13,13 @@ class Roles extends \Controllers\PrivateController
         //);
         parent::__construct();
     }
+    */
 
     public function run() :void
     {
         $dataview = array();
-        $dataview["items"] = \Dao\MntRoles\Roles::getAll();
-        \Views\Renderer::render("mntRoles/roles", $dataview);
+        $dataview["items"] = \Dao\Mnt\Roles::getAll();
+        \Views\Renderer::render("admin/roles", $dataview);
     }
 }
 

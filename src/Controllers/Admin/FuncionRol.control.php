@@ -14,13 +14,14 @@ class FuncionRol extends \Controllers\PublicController
     private $mode = "";
     private $mode_dsc = "";
     private $mode_adsc = array(
-        "INS" => "Nueva Funcion por Rol",
+        "INS" => "Añadir Funciones a Rol",
         "UPD" => "Editar Rol: %s Función: %s",
         "DEL" => "Eliminar Rol: %s Función: %s",
         "DSP" => "Visualizar Rol: %s Función: %s"
     );
     private $minimumDate = "";
 
+    private $onlyDisplayIns = true;
     private $notDisplayIns = false;
     private $allInfoDisplayed = false;
     private $disabled = "";
@@ -30,10 +31,15 @@ class FuncionRol extends \Controllers\PublicController
     private $hasErrors = false;
     private $aErrors = array();
 
+    private $roles = array();
+    private $funciones = array();
+
     public function run() :void
     {
-        $this->minimumDate = date('Y-m-d', time() + 31104000);  //(12*30*24*60*60) (m d h mi s));
+        $this->roles = \Dao\Mnt\FuncionesRoles::getRoles();
+        $this->funciones = \Dao\Mnt\FuncionesRoles::getFunciones();
 
+        $this->minimumDate = date('Y-m-d', time() + 31104000);  //(12*30*24*60*60) (m d h mi s));
         $this->mode = isset($_GET["mode"])?$_GET["mode"]:"";
         $this->RolId = isset($_GET["RolId"])?$_GET["RolId"]:"";
         $this->FuncionId = isset($_GET["FuncionId"])?$_GET["FuncionId"]:"";
@@ -146,6 +152,7 @@ class FuncionRol extends \Controllers\PublicController
             $this->FuncionId
         );
 
+        $this->onlyDisplayIns = ($this->mode=="INS") ? true: false;
         $this->notDisplayIns = ($this->mode=="INS") ? false : true;
         $this->disabled = ($this->mode == "INS" || $this->mode =="DEL" || $this->mode =="DSP") ? "disabled" : "";
         $this->readonly = ($this->mode =="DEL" || $this->mode=="DSP") ? "readonly" : "";

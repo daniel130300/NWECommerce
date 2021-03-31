@@ -51,6 +51,16 @@ class FuncionesRoles extends \Dao\Table
         
         return self::obtenerRegistros($sqlstr, array("UsuarioBusqueda"=>"%".$UsuarioBusqueda."%"));
     }
+
+    static public function getRoles()
+    {
+        return self::obtenerRegistros("SELECT * FROM roles WHERE RolEst = 'ACT';", array());
+    }
+
+    static public function getFunciones()
+    {
+        return self::obtenerRegistros("SELECT * FROM funciones WHERE FuncionEst = 'ACT';", array());
+    }
 }
 
 ?>

@@ -5,18 +5,44 @@
       </div>
       <div class="card-body"> 
         <form class="form" method="post" action="index.php?page=admin_funcionrol&mode={{mode}}&RolId={{RolId}}&FuncionId={{FuncionId}}">
-  
-          <div class="form-group col-md-2">
-            <label for="RolId">Código Rol</label>
-            <input type="hidden" class="form-control" id="RolId" name="RolId" value="{{RolId}}"/>
-            <input readonly type="text" class="form-control" name="RolIdDummy" value="{{RolId}}"/>
-          </div>
+          
+          {{if notDisplayIns}}
+            <div class="form-group col-md-2">
+              <label for="RolId">Código Rol</label>
+              <input type="hidden" class="form-control" id="RolId" name="RolId" value="{{RolId}}"/>
+              <input readonly type="text" class="form-control" name="RolIdDummy" value="{{RolId}}"/>
+            </div>
 
+            <div class="form-group col-md-4">
+              <label for="FuncionId">Código Función</label>
+              <input type="hidden" class="form-control" id="FuncionId" name="FuncionId" value="{{FuncionId}}"/>
+              <input readonly type="text" class="form-control" name="FuncionIdDummy" value="{{FuncionId}}"/>
+            </div>
+          {{endif notDisplayIns}}
+
+          {{if onlyDisplayIns}}
           <div class="form-group col-md-4">
-            <label for="FuncionId">Código Función</label>
-            <input type="hidden" class="form-control" id="FuncionId" name="FuncionId" value="{{FuncionId}}"/>
-            <input readonly type="text" class="form-control" name="FuncionIdDummy" value="{{FuncionId}}"/>
+            <label for="Roles">Roles</label>
+            <br/>
+            <select class="form-control" id="RolId2" name="RolId2" {{if readonly}}disabled{{endif readonly}}>
+              {{foreach roles}}
+                <option value="{{RolId}}">{{RolDsc}}</option>
+              {{endfor roles}}
+            </select>
           </div>
+          {{endif onlyDisplayIns}}
+            
+          {{if onlyDisplayIns}}
+          <div class="form-group col-md-4">
+            <label for="FuncionId2">Funciones</label>
+            <br/>
+            <select class="selectpicker" multiple data-live-search="true" id="FuncionId2" name="FuncionId2">
+              {{foreach fuciones}}
+                <option value="{{FuncionId}}">{{FuncionDsc}}</option>
+              {{endfor funciones}}
+            </select>
+          </div>
+          {{endif onlyDisplayIns}}
 
           {{if notDisplayIns}}
           <div class="form-group col-md-4">

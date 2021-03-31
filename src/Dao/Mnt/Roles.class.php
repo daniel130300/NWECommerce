@@ -1,31 +1,34 @@
 <?php
 
-namespace Dao\MntRoles;
+namespace Dao\Mnt;
+
+use Dao\Security\Estados;
 
 class Roles extends \Dao\Table
 {
     public static function getAll()
     {
-        return self::obtenerRegistros("SELECT * from roles;", array());
+        return self::obtenerRegistros("SELECT * FROM roles;", array());
     }
 
-    public static function getOne($rolescod)
+    public static function getOne($RolId)
     {
-        $sqlstr = "Select * from roles where rolescod=:rolescod;";
-        return self::obtenerUnRegistro($sqlstr, array("rolescod"=>$rolescod));
+        $sqlstr = "SELECT * FROM roles WHERE RolId=:RolId;";
+        return self::obtenerUnRegistro($sqlstr, array("RolId"=>$RolId));
     }
 
-    public static function insert($rolescod, $rolesdsc, $rolesest)
+    public static function insert($RolId, $RolDsc, $RolEst)
     {
-        $insstr = "INSERT INTO roles (rolescod, rolesdsc, rolesest) values (:rolescod, :rolesdsc, :rolesest);";
+        $insstr = "INSERT INTO roles (RolId, RolDsc, RolEst) values (:RolId, :RolDsc, :RolEst);";
         return self::executeNonQuery(
             $insstr,
-            array("rolescod"=>$rolescod, 
-                "rolesdsc"=>$rolesdsc, 
-                "rolesest"=>$rolesest
+            array("RolId"=>$RolId, 
+                "RolDsc"=>Estados::ACTIVO, 
+                "RolEst"=>$RolEst
             )
         );
     }
+
     public static function update($rolesdsc, $rolesest, $rolescod)
     {
         $updsql = "UPDATE roles SET rolesdsc=:rolesdsc, rolesest=:rolesest where rolescod=:rolescod;";
