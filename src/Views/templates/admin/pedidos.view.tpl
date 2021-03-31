@@ -1,6 +1,6 @@
 <section class="container-fluid">
 
-    <h3 class="my-4 text-center">Gestión de Pedidos</h3>
+    <h3 class="my-4 text-center">Gestión de Pedidos Pendientes</h3>
 
     <div class="d-flex-inline">
         <form method="POST" action="index.php?page=admin_pedidos">

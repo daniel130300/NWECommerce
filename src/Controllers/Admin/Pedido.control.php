@@ -25,6 +25,7 @@ class Pedido extends \Controllers\PublicController
     private $ClienteDireccion = "";
     private $ClienteTelefono = "";
     private $UsuarioNombre = "";
+    private $Productos = array();
 
     private $mode_dsc = "";
     private $mode_adsc = array(
@@ -71,7 +72,9 @@ class Pedido extends \Controllers\PublicController
     private function _load()
     {
         $_data = \Dao\Mnt\Pedidos::getOne($this->VentaId);
-        if ($_data) 
+        $_productos= \Dao\Mnt\Pedidos::getProductos($this->VentaId);
+
+        if ($_data && $_productos) 
         {
             $this->VentaId = $_data["VentaId"];
             $this->VentaFecha = $_data["VentaFecha"];
@@ -82,6 +85,7 @@ class Pedido extends \Controllers\PublicController
             $this->ClienteDireccion = $_data["ClienteDireccion"];
             $this->ClienteTelefono = $_data["ClienteTelefono"];
             $this->UsuarioNombre = $_data["UsuarioNombre"];
+            $this->Productos = $_productos;
             $this->_setViewData();
         }
     }

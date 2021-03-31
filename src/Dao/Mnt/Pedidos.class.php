@@ -6,7 +6,7 @@ class Pedidos extends \Dao\Table
 {
     public static function getAll()
     {
-        return self::obtenerRegistros("SELECT v.*, u.UsuarioNombre FROM Ventas v INNER JOIN usuarios u on v.UsuarioId = u.UsuarioId;", array());
+        return self::obtenerRegistros("SELECT v.*, u.UsuarioNombre FROM Ventas v INNER JOIN usuarios u on v.UsuarioId = u.UsuarioId WHERE VentaEst='PND';", array());
     }
 
     public static function getOne($VentaId)
@@ -15,31 +15,19 @@ class Pedidos extends \Dao\Table
         return self::obtenerUnRegistro($sqlstr, array("VentaId"=>$VentaId));
     }
 
-    public static function insert($CategoriaNom, $CategoriaEst)
+    public static function update($VentaId)
     {
-        $insstr = "INSERT INTO categorias (CategoriaNom, CategoriaEst) VALUES (:CategoriaNom, :CategoriaEst);";
-        return self::executeNonQuery(
-            $insstr,
-            array("CategoriaNom"=>$CategoriaNom, "CategoriaEst"=>$CategoriaEst)
-        );
-    }
-
-    public static function update($CategoriaNom, $CategoriaEst, $CategoriaId)
-    {
-        $updsql = "UPDATE categorias SET CategoriaNom=:CategoriaNom, CategoriaEst=:CategoriaEst WHERE CategoriaId=:CategoriaId;";
+        $updsql = "UPDATE ventas SET VentaEst = 'ENVIADO' WHERE VentaId=:VentaId;";
         return self::executeNonQuery(
             $updsql,
-            array("CategoriaNom" => $CategoriaNom, "CategoriaEst" => $CategoriaEst, "CategoriaId" => $CategoriaId)
+            array("VentaId" => $VentaId)
         );
     }
 
-    public static function delete($CategoriaId)
+    public static function getProductos($VentaId)
     {
-        $delsql = "DELETE FROM categorias WHERE CategoriaId=:CategoriaId;";
-        return self::executeNonQuery(
-            $delsql,
-            array("CategoriaId" => $CategoriaId)
-        );
+        $sqlstr = "SELECT vp.ProdId, ProdNombre, ProdDescripcion, ProdPrecioVenta, VentasProdCantidad FROM VentasProductos vp INNER JOIN Productos p ON vp.ProdId = p.ProdId WHERE vp.VentaId=:VentaId;";
+        return self::obtenerRegistros($sqlstr, array("VentaId"=>$VentaId));
     }
 
     static public function searchPedidos($UsuarioBusqueda)

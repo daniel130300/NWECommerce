@@ -12,45 +12,72 @@
             <input readonly type="text" class="form-control" name="VentaIdDummy" value="{{VentaId}}"/>
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="VentaFecha">Fecha de la Venta</label>
             <input type="text" class="form-control" readonly id="VentaFecha" name="VentaFecha" value="{{VentaFecha}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="VentaISV">Impuesto sobre la Venta</label>
             <input type="text" class="form-control" readonly id="VentaISV" name="VentaISV" value="{{VentaISV}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="VentaEst">Estado de la Venta</label>
             <input type="text" class="form-control" readonly id="VentaEst" name="VentaEst" value="{{VentaEst}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="VentaTipoPago">Tipo de Pago</label>
             <input type="text" class="form-control" readonly id="VentaTipoPago" name="VentaTipoPago" value="{{VentaTipoPago}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="VentaPagoEnvio">Pago del envio</label>
             <input type="text" class="form-control" readonly id="VentaPagoEnvio" name="VentaTipoPago" value="{{VentaPagoEnvio}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="UsuarioNombre">Nombre del Cliente</label>
             <input type="text" class="form-control" readonly id="UsuarioNombre" name="UsuarioNombre" value="{{UsuarioNombre}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="ClienteDireccion">Dirección del Cliente</label>
             <input type="text" class="form-control" readonly id="ClienteDireccion" name="ClienteDireccion" value="{{ClienteDireccion}}" maxlength="80">
           </div>
 
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-5">
             <label for="ClienteTelefono">Télefono del Cliente</label>
             <input type="text" class="form-control" readonly id="ClienteTelefono" name="ClienteTelefono" value="{{ClienteTelefono}}" maxlength="80">
           </div>
+
+          <div class="table-responsive">
+            <table class="table">
+            <thead class="thead-light">
+                <tr>
+                <th class="text-center align-middle">Código del Producto</th>
+                <th class="text-center align-middle">Nombre del Producto</th>
+                <th class="text-center align-middle">Descripcion del Producto</th>
+                <th class="text-center align-middle">Precio del Producto</th>
+                <th class="text-center align-middle">Cantidad de Producto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{foreach Productos}}
+                <tr>
+                    <td class="text-center align-middle">{{ProdId}}</td>
+                    <td class="text-center align-middle">{{ProdNombre}}</td>
+                    <td class="text-center align-middle">{{ProdDescripcion}}</td>
+                    <td class="text-center align-middle">{{ProdPrecioVenta}}</td>
+                    <td class="text-center align-middle">{{VentasProdCantidad}}</td>
+                    <td class="text-center align-middle">
+                    </td>
+                </tr>
+                {{endfor Productos}}
+            </tbody>
+          </table>
+        </div>
          
           <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
           {{if showaction}}
