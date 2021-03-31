@@ -1,0 +1,75 @@
+<section class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="card my-5 w-100">
+      <div class="card-header">
+        <h3 class="text-center">{{mode_dsc}}</h3>
+      </div>
+      <div class="card-body"> 
+        <form class="form" method="post" action="index.php?page=admin_pedido&mode={{mode}}&VentaId={{VentaId}}">
+  
+          <div class="form-group col-md-2">
+            <label for="CategoriaId">Código</label>
+            <input type="hidden" class="form-control" id="VentaId" name="VentaId" value="{{VentaId}}"/>
+            <input readonly type="text" class="form-control" name="VentaIdDummy" value="{{VentaId}}"/>
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="VentaFecha">Fecha de la Venta</label>
+            <input type="text" class="form-control" readonly id="VentaFecha" name="VentaFecha" value="{{VentaFecha}}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="VentaISV">Impuesto sobre la Venta</label>
+            <input type="text" class="form-control" readonly id="VentaISV" name="VentaISV" value="{{VentaISV}}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="VentaEst">Estado de la Venta</label>
+            <input type="text" class="form-control" readonly id="VentaEst" name="VentaEst" value="{{VentaEst}}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="VentaTipoPago">Tipo de Pago</label>
+            <input type="text" class="form-control" readonly id="VentaTipoPago" name="VentaTipoPago" value="{{VentaTipoPago}}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="VentaPagoEnvio">Pago del Envío</label>
+            <input type="text" class="form-control" readonly id="VentaPagoEnvio" name="VentaPagoEnvio" value="{{VentaPagoEnvio}}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="UsuarioNombre">Nombre del Cliente</label>
+            <input type="text" class="form-control" readonly id="UsuarioNombre" name="UsuarioNombre" value="{{UsuarioNombre}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="ClienteDirecion">Direccion del Cliente</label>
+            <input type="text" class="form-control" readonly id="ClienteDireccion" name="ClienteDireccion" value="{{ClienteDireccion}}" maxlength="80">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label for="ClienteTelefono">Telefono del Cliente</label>
+            <input type="text" class="form-control" readonly id="ClienteTelefono" name="ClienteTelefono" value="{{ClienteTelefono}}" maxlength="80">
+          </div>
+  
+          <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
+          {{if showaction}}
+            <button type="submit" class="btn btn-primary mt-2 mr-2" id="btnGuardar" name="btnGuardar">Cambiar Estado</button>
+          {{endif showaction}}
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("btnCancelar").addEventListener("click", function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.assign("index.php?page=admin_categorias");
+        });
+    });
+  </script>
+  
+  
+  
