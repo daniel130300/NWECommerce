@@ -6,6 +6,7 @@ use Dao\Security\Estados;
 
 class Roles extends \Dao\Table
 {
+
     public static function getAll()
     {
         return self::obtenerRegistros("SELECT * FROM roles;", array());
@@ -19,34 +20,34 @@ class Roles extends \Dao\Table
 
     public static function insert($RolId, $RolDsc, $RolEst)
     {
-        $insstr = "INSERT INTO roles (RolId, RolDsc, RolEst) values (:RolId, :RolDsc, :RolEst);";
+        $insstr = "INSERT INTO roles (RolId, RolDsc, RolEst) VALUES (:RolId, :RolDsc, :RolEst);";
         return self::executeNonQuery(
             $insstr,
-            array("RolId"=>$RolId, 
-                "RolDsc"=>Estados::ACTIVO, 
-                "RolEst"=>$RolEst
+            array("RolId"=>$RolId=uniqid(), 
+                "RolDsc"=>$RolDsc, 
+                "RolEst"=>Estados::ACTIVO
             )
         );
     }
 
-    public static function update($rolesdsc, $rolesest, $rolescod)
+    public static function update($RolDsc, $RolEst, $RolId)
     {
-        $updsql = "UPDATE roles SET rolesdsc=:rolesdsc, rolesest=:rolesest where rolescod=:rolescod;";
+        $updsql = "UPDATE roles SET RolDsc=:RolDsc, RolEst=:RolEst WHERE RolId=:RolId;";
         return self::executeNonQuery(
             $updsql,
             array(
-                "rolesdsc"=>$rolesdsc, 
-                "rolesest"=>$rolesest,
-                "rolescod" => $rolescod
+                "RolDsc"=>$RolDsc, 
+                "RolEst"=>$RolEst,
+                "RolId" => $RolId
             )
         );
     }
-    public static function delete( $rolescod)
+    public static function delete( $RolId)
     {
-        $delsql = "delete from roles where rolescod=:rolescod;";
+        $delsql = "DELETE FROM roles WHERE RolId=:RolId;";
         return self::executeNonQuery(
             $delsql,
-            array( "rolescod" => $rolescod)
+            array( "RolId" => $RolId)
         );
     }
 

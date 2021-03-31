@@ -3,7 +3,7 @@
 -- Host: localhost    Database: globalshophn
 -- ------------------------------------------------------
 -- Server version	8.0.23
-
+USE globalshophn;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -31,7 +31,7 @@ CREATE TABLE `media` (
   `ProdId` int DEFAULT NULL,
   PRIMARY KEY (`MediaId`),
   KEY `IX_Relationship5` (`ProdId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

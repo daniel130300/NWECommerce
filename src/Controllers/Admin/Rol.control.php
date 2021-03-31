@@ -2,9 +2,9 @@
 
 namespace Controllers\Admin;
 
-class Rol extends \Controllers\PublicController
+class Rol extends \Controllers\PrivateController
 {
-    /*
+    
     public function __construct()
     {
         //$userInRole = \Utilities\Security::isInRol(
@@ -13,7 +13,7 @@ class Rol extends \Controllers\PublicController
         //);
         parent::__construct();
     }
-    */
+    
     
     private $RolId = "";
     private $RolDsc = "";
@@ -70,18 +70,18 @@ class Rol extends \Controllers\PublicController
                     break;
 
                     case "UPD":
-                        if (\Dao\Mnt\Roles::update($this->rolesdsc, $this->rolesest, $this->rolescod)) {
+                        if (\Dao\Mnt\Roles::update($this->RolDsc, $this->RolEst, $this->RolId)) {
                             \Utilities\Site::redirectToWithMsg(
-                                "index.php?page=mntRoles_roles",
+                                "index.php?page=admin_roles",
                                 "¡Rol Actualizado Satisfactoriamente!"
                             );
                         }
                     break;
 
                     case "DEL":
-                        if (\Dao\Mnt\Roles::delete($this->rolescod)) {
+                        if (\Dao\Mnt\Roles::delete($this->RolId)) {
                             \Utilities\Site::redirectToWithMsg(
-                                "index.php?page=mntRoles_roles",
+                                "index.php?page=admin_roles",
                                 "¡Rol Eliminado Satisfactoriamente!"
                             );
                         }
@@ -127,6 +127,8 @@ class Rol extends \Controllers\PublicController
         $this->hasErrors = (count($this->aErrors) > 0);
         $this->_setViewData();
     }
+
+   
 
     private function _setViewData()
     {

@@ -2,9 +2,9 @@
 
 namespace Controllers\Admin;
 
-class Roles extends \Controllers\PublicController
+class Roles extends \Controllers\PrivateController
 {
-    /*
+    
     public function __construct()
     {
         //$userInRole = \Utilities\Security::isInRol(
@@ -13,7 +13,7 @@ class Roles extends \Controllers\PublicController
         //);
         parent::__construct();
     }
-    */
+    
 
     public function run() :void
     {
