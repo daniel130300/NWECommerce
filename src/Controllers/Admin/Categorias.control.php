@@ -27,6 +27,7 @@ class Categorias extends \Controllers\PrivateController
             if(!empty($this->UsuarioBusqueda))
             {
                 $dataview["items"] = \Dao\Mnt\Categorias::searchCategorias($this->UsuarioBusqueda);
+                \Utilities\Context::setContext("UsuarioBusqueda", $this->UsuarioBusqueda);
             }
             else
             {

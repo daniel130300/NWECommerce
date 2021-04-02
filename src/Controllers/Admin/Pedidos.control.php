@@ -27,6 +27,7 @@ class Pedidos extends \Controllers\PublicController
             if(!empty($this->UsuarioBusqueda))
             {
                 $dataview["items"] = \Dao\Mnt\Pedidos::searchPedidos($this->UsuarioBusqueda);
+                \Utilities\Context::setContext("UsuarioBusqueda", $this->UsuarioBusqueda);
             }
             else
             {

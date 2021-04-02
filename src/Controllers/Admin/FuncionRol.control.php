@@ -5,7 +5,9 @@ namespace Controllers\Admin;
 class FuncionRol extends \Controllers\PublicController
 {
     private $RolId = 0;
+    private $RolId2 = "";
     private $FuncionId = "";
+    private $FuncionId2 = "";
     private $FuncionRolEst = "";
     private $FuncionExp = "";
     private $FuncionRolEst_ACT = "";
@@ -14,7 +16,7 @@ class FuncionRol extends \Controllers\PublicController
     private $mode = "";
     private $mode_dsc = "";
     private $mode_adsc = array(
-        "INS" => "Añadir Funciones a Rol",
+        "INS" => "Agregar Función a Rol",
         "UPD" => "Editar Rol: %s Función: %s",
         "DEL" => "Eliminar Rol: %s Función: %s",
         "DSP" => "Visualizar Rol: %s Función: %s"
@@ -63,7 +65,7 @@ class FuncionRol extends \Controllers\PublicController
                 switch ($this->mode)
                 {
                     case "INS":
-                        if (\Dao\Mnt\FuncionesRoles::insert($this->RolId, $this->FuncionId, $this->FuncionExp)) 
+                        if (\Dao\Mnt\FuncionesRoles::insert($this->RolId2, $this->FuncionId2, $this->FuncionExp)) 
                         {
                             \Utilities\Site::redirectToWithMsg(
                                 "index.php?page=admin_funcionesroles",
@@ -117,26 +119,29 @@ class FuncionRol extends \Controllers\PublicController
 
     private function _loadPostData()
     {
-        $this->RolId = isset($_POST["RolId"]) ? $_POST["RolId"] : 0 ;
+        $this->RolId = isset($_POST["RolId"]) ? $_POST["RolId"] : 0;
+        $this->RolId2 = isset($_POST["RolId2"]) ? $_POST["RolId2"] : "";
         $this->FuncionId = isset($_POST["FuncionId"]) ? $_POST["FuncionId"] : "" ;
+        $this->FuncionId2 = isset($_POST["FuncionId2"]) ? $_POST["FuncionId2"] : "" ;
         $this->FuncionRolEst = isset($_POST["FuncionRolEst"]) ? $_POST["FuncionRolEst"] : "";
         $this->FuncionExp = isset($_POST["FuncionExp"]) ? $_POST["FuncionExp"] : "";
 
-        if (\Utilities\Validators::IsEmpty($this->RolId)) 
+        if($this->mode == "INS")
         {
-            $this->aErrors[] = "El rol no puede ir vacío.";
+            if(!empty(\Dao\Mnt\FuncionesRoles::getOne($this->RolId2, $this->FuncionId2)))
+            {
+                $this->aErrors[] = "La funcion ya se encuentra registrada para este rol.";
+            }
         }
 
-        if (\Utilities\Validators::IsEmpty($this->FuncionId)) 
+        if($this->mode == "INS" || $this->mode == "UPD")
         {
-            $this->aErrors[] = "La funcion no puede ir vacía.";
+            if (\Utilities\Validators::IsEmpty($this->FuncionExp)) 
+            {
+                $this->aErrors[] = "La fecha de expiración no puede ir vacía.";
+            }
         }
-
-        if (\Utilities\Validators::IsEmpty($this->FuncionExp)) 
-        {
-            $this->aErrors[] = "La fecha de expiración no puede ir vacía.";
-        }
-
+        
         $this->hasErrors = (count($this->aErrors) > 0);
         $this->_setViewData();
     }

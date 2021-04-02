@@ -71,8 +71,6 @@
                     <td class="text-center align-middle">{{ProdDescripcion}}</td>
                     <td class="text-center align-middle">{{ProdPrecioVenta}}</td>
                     <td class="text-center align-middle">{{VentasProdCantidad}}</td>
-                    <td class="text-center align-middle">
-                    </td>
                 </tr>
                 {{endfor Productos}}
             </tbody>

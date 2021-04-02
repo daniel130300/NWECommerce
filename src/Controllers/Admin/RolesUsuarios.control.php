@@ -2,7 +2,7 @@
 
     namespace Controllers\Admin;
 
-    class FuncionesRoles extends \Controllers\PublicController
+    class RolesUsuarios extends \Controllers\PublicController
     {
 
         private $UsuarioBusqueda = "";
@@ -16,20 +16,20 @@
 
                 if(!empty($this->UsuarioBusqueda))
                 {
-                    $dataview["items"] = \Dao\Mnt\FuncionesRoles::searchFuncionesRoles($this->UsuarioBusqueda);
+                    $dataview["items"] = \Dao\Mnt\RolesUsuarios::searchRolesUsuarios($this->UsuarioBusqueda);
                     \Utilities\Context::setContext("UsuarioBusqueda", $this->UsuarioBusqueda);
                 }
                 else
                 {
-                    $dataview["items"] = \Dao\Mnt\FuncionesRoles::getAll();
+                    $dataview["items"] = \Dao\Mnt\RolesUsuarios::getAll();
                 }
             } 
             else
             {   
-                $dataview["items"] = \Dao\Mnt\FuncionesRoles::getAll();
+                $dataview["items"] = \Dao\Mnt\RolesUsuarios::getAll();
             }
             
-            \Views\Renderer::render("admin/funcionesroles", $dataview);
+            \Views\Renderer::render("admin/rolesusuarios", $dataview);
         } 
     }
 ?>

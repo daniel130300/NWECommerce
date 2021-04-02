@@ -1,12 +1,12 @@
 <section class="container-fluid">
 
-    <h3 class="my-4 text-center">Gestión de Funciones por Roles</h3>
+    <h3 class="my-4 text-center">Gestión de Funciones para Roles</h3>
     
     <div class="d-flex-inline">
       <form method="POST" action="index.php?page=admin_funcionesroles">
         <div class="form-row">
           <div class="col-8">
-            <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" placeholder="Ingrese su busqueda">
+            <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" value="{{UsuarioBusqueda}}" placeholder="Ingrese su busqueda">
           </div>
           <div class="col-2">
             <button type="submit" class="btn btn-primary mb-2" id="btnBuscar" name="btnBuscar">Buscar</button>

@@ -5,12 +5,13 @@
     </div>
     <div class="card-body"> 
       <form class="form" method="post" action="index.php?page=admin_usuario&mode={{mode}}&UsuarioId={{UsuarioId}}">
-
+        {{if notDisplayIns}}
         <div class="form-group col-md-2">
           <label for="UsuarioId">Código</label>
           <input type="hidden" class="form-control" id="UsuarioId" name="UsuarioId" value="{{UsuarioId}}"/>
           <input readonly type="text" class="form-control" name="UsaurioIdDummy" value="{{UsuarioId}}"/>
         </div>
+        {{endif notDisplayIns}}
   
         <div class="form-group col-md-10">
           <label for="UsuarioEmail">Correo Electrónico</label>

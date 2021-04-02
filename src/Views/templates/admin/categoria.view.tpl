@@ -5,18 +5,19 @@
       </div>
       <div class="card-body"> 
         <form class="form" method="post" action="index.php?page=admin_categoria&mode={{mode}}&CategoriaId={{CategoriaId}}">
-  
+          {{if notDisplayIns}}
           <div class="form-group col-md-2">
             <label for="CategoriaId">Código</label>
             <input type="hidden" class="form-control" id="CategoriaId" name="CategoriaId" value="{{CategoriaId}}"/>
             <input readonly type="text" class="form-control" name="CategoriaIdDummy" value="{{CategoriaId}}"/>
           </div>
+          {{endif notDisplayIns}}
 
           <div class="form-group col-md-10">
             <label for="CategoriaNom">Categoría</label>
             <input type="text" class="form-control" {{readonly}} id="CategoriaNom" name="CategoriaNom" value="{{CategoriaNom}}" maxlength="80" placeholder="Ingrese el nombre de la categoría">
           </div>
-  
+
           {{if notDisplayIns}}
           <div class="form-group col-md-4">
             <label for="CategoriaEst">Estado</label>

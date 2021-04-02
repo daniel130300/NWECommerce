@@ -35,12 +35,12 @@ class FuncionesRoles extends \Dao\Table
         );
     }
 
-    public static function delete($FuncionId, $RolId)
+    public static function delete($RolId, $FuncionId)
     {
         $delsql = "DELETE FROM funcionesroles WHERE RolId=:RolId AND FuncionId=:FuncionId;";
         return self::executeNonQuery(
             $delsql,
-            array("FuncionId" => $FuncionId, "RolId" => $RolId)
+            array("RolId" => $RolId, "FuncionId" => $FuncionId)
         );
     }
 
@@ -61,6 +61,7 @@ class FuncionesRoles extends \Dao\Table
     {
         return self::obtenerRegistros("SELECT * FROM funciones WHERE FuncionEst = 'ACT';", array());
     }
+
 }
 
 ?>

@@ -7,17 +7,17 @@
         <form class="form" method="post" action="index.php?page=admin_funcionrol&mode={{mode}}&RolId={{RolId}}&FuncionId={{FuncionId}}">
           
           {{if notDisplayIns}}
-            <div class="form-group col-md-2">
-              <label for="RolId">Código Rol</label>
-              <input type="hidden" class="form-control" id="RolId" name="RolId" value="{{RolId}}"/>
-              <input readonly type="text" class="form-control" name="RolIdDummy" value="{{RolId}}"/>
-            </div>
+          <div class="form-group col-md-2">
+            <label for="RolId">Código Rol</label>
+            <input type="hidden" class="form-control" id="RolId" name="RolId" value="{{RolId}}"/>
+            <input readonly type="text" class="form-control" name="RolIdDummy" value="{{RolId}}"/>
+          </div>
 
-            <div class="form-group col-md-4">
-              <label for="FuncionId">Código Función</label>
-              <input type="hidden" class="form-control" id="FuncionId" name="FuncionId" value="{{FuncionId}}"/>
-              <input readonly type="text" class="form-control" name="FuncionIdDummy" value="{{FuncionId}}"/>
-            </div>
+          <div class="form-group col-md-4">
+            <label for="FuncionId">Código Función</label>
+            <input type="hidden" class="form-control" id="FuncionId" name="FuncionId" value="{{FuncionId}}"/>
+            <input readonly type="text" class="form-control" name="FuncionIdDummy" value="{{FuncionId}}"/>
+          </div>
           {{endif notDisplayIns}}
 
           {{if onlyDisplayIns}}
@@ -31,15 +31,15 @@
             </select>
           </div>
           {{endif onlyDisplayIns}}
-            
+
           {{if onlyDisplayIns}}
-          <div class="form-group col-md-6">
-            <label for="FuncionId2">Funciones</label>
+          <div class="form-group col-md-4">
+            <label for="FuncionId2">Función</label>
             <br/>
-            <select class="selectpicker" multiple data-live-search="true" id="FuncionId2" name="FuncionId2">
-              {{foreach funciones}}
+            <select class="form-control" id="FuncionId2" name="FuncionId2" {{if readonly}}disabled{{endif readonly}}>
+               {{foreach funciones}}
                 <option value="{{FuncionId}}">{{FuncionDsc}}</option>
-              {{endfor funciones}}
+               {{endfor funciones}}
             </select>
           </div>
           {{endif onlyDisplayIns}}
@@ -60,6 +60,16 @@
             <input type="date" class="form-control" id="FuncionExp" name="FuncionExp" value="{{FuncionExp}}" min="{{minimumDate}}" {{if readonly}}disabled{{endif readonly}}>
           </div>
 
+          {{if hasErrors}}
+          <section>
+              <ul>
+                {{foreach aErrors}}
+                  <li class="text-danger my-2">{{this}}</li>
+                {{endfor aErrors}}
+              </ul>
+          </section>
+          {{endif hasErrors}}
+
           <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
           {{if showaction}}
             <button type="submit" class="btn btn-primary mt-2 mr-2" id="btnGuardar" name="btnGuardar">Guardar</button>
@@ -78,6 +88,7 @@
         });
     });
   </script>
-  
+
+    
   
   

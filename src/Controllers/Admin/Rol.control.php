@@ -2,9 +2,9 @@
 
 namespace Controllers\Admin;
 
-class Rol extends \Controllers\PrivateController
+class Rol extends \Controllers\PublicController
 {
-    
+    /*
     public function __construct()
     {
         //$userInRole = \Utilities\Security::isInRol(
@@ -13,6 +13,7 @@ class Rol extends \Controllers\PrivateController
         //);
         parent::__construct();
     }
+    */
     
     
     private $RolId = "";
@@ -61,7 +62,7 @@ class Rol extends \Controllers\PrivateController
                 switch ($this->mode)
                 {
                     case "INS":
-                        if (\Dao\Mnt\Roles::insert($this->RolId, $this->RolDsc, $this->RolEst)) {
+                        if (\Dao\Mnt\Roles::insert($this->RolDsc)) {
                             \Utilities\Site::redirectToWithMsg(
                                 "index.php?page=admin_roles",
                                 "¡Rol Agregado Satisfactoriamente!"
@@ -114,9 +115,10 @@ class Rol extends \Controllers\PrivateController
 
         //validaciones
         //aplicar todas la reglas de negocio
+
         if (\Utilities\Validators::IsEmpty($this->RolDsc)) 
         {
-            $this->aErrors[] = "La descripción del rol no puede ir vacío.";
+            $this->aErrors[] = "La descripción del rol no puede ir vacía.";
         }
 
         if (!\Utilities\Validators::ValidarSoloLetras($this->RolDsc)) 
@@ -124,11 +126,17 @@ class Rol extends \Controllers\PrivateController
             $this->aErrors[] = "La descripción no es valida.";
         }
 
+        if($this->mode=="INS")
+        {
+            if(!empty(\Dao\Mnt\Roles::getOne(strtoupper($this->RolDsc))))
+            {
+                $this->aErrors[] = "El rol ya se encuentra ingresado";
+            }
+        }
+
         $this->hasErrors = (count($this->aErrors) > 0);
         $this->_setViewData();
     }
-
-   
 
     private function _setViewData()
     {

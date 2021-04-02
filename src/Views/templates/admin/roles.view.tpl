@@ -6,7 +6,7 @@
     <form method="POST" action="index.php?page=admin_roles">
       <div class="form-row">
         <div class="col-8">
-          <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" placeholder="Ingrese su busqueda">
+          <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" value="{{UsuarioBusqueda}}" placeholder="Ingrese su busqueda">
         </div>
         <div class="col-2">
           <button type="submit" class="btn btn-primary mb-2" id="btnBuscar" name="btnBuscar">Buscar</button>
