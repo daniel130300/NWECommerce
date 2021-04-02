@@ -60,7 +60,7 @@ class RolesUsuarios extends \Dao\Table
 
     static public function getUsuarios()
     {
-        return self::obtenerRegistros("SELECT * FROM usuarios;", array());
+        return self::obtenerRegistros("SELECT * FROM usuarios ORDER BY UsuarioTipo;", array());
     }
 
     static public function getRoles()

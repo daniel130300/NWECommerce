@@ -15,7 +15,7 @@ class FuncionRol extends \Controllers\PrivateController
         
         parent::__construct();
     }
-    
+
     private $RolId = 0;
     private $RolId2 = "";
     private $FuncionId = "";

@@ -17,7 +17,7 @@ class Roles extends \Controllers\PrivateController
     }
     
     private $UsuarioBusqueda = "";
-    
+
     public function run() :void
     {
         $dataview = array();

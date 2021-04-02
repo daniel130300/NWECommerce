@@ -17,7 +17,7 @@
         }
 
         private $UsuarioBusqueda = "";
-        
+
         public function run() :void
         {
             $dataview = array();

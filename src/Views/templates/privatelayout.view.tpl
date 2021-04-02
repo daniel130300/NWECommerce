@@ -38,25 +38,40 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 
+            <ul class="navbar-nav">>
+              <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Gestión de la Plataforma
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                    {{foreach NAVIGATION}}
+                      <a class="dropdown-item" href="{{nav_url}}">{{if nav_icon}}<i class="{{nav_icon}}"></i>{{endif nav_icon}}{{nav_label}}</a>
+                    {{endfor NAVIGATION}}
+                  </div>
+              </li>
+            </ul>
+            
+            <!--
             {{foreach NAVIGATION}}
             <li class="nav-item">
               <a class="nav-link" href="{{nav_url}}">{{if nav_icon}}<i class="{{nav_icon}}"></i>{{endif nav_icon}}{{nav_label}}</a>
             </li>
             {{endfor NAVIGATION}}
+            -->
             
-          <ul class="navbar-nav">>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-user mx-2"></i>
-                  {{with login}}
-                    {{userName}}
-                  {{endwith login}}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-                    <a class="dropdown-item" href="index.php?page=sec_logout"> <i class="fas fa-sign-out-alt mx-2"></i>Salir</a>
-                </div>
-            </li>
-        </ul>
+            <ul class="navbar-nav">>
+              <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user mx-2"></i>
+                    {{with login}}
+                      {{userName}}
+                    {{endwith login}}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                      <a class="dropdown-item" href="index.php?page=sec_logout"> <i class="fas fa-sign-out-alt mx-2"></i>Salir</a>
+                  </div>
+              </li>
+            </ul>
         </div>
       </div>
     </nav>

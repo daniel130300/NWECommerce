@@ -37,7 +37,7 @@ class RolUsuario extends \Controllers\PrivateController
         "DEL" => "Eliminar Usuario: %s Rol: %s",
         "DSP" => "Visualizar Usuario: %s Rol: %s"
     );
-    
+
     private $minimumDate = "";
 
     private $onlyDisplayIns = true;
@@ -161,7 +161,7 @@ class RolUsuario extends \Controllers\PrivateController
 
         if($this->mode == "UPD")
         {
-            if (\Utilities\Validators::IsEmpty($this->FuncionExp)) 
+            if (\Utilities\Validators::IsEmpty($this->RolUsuarioExp)) 
             {
                 $this->aErrors[] = "La fecha de expiración no puede ir vacía.";
             }
