@@ -3,18 +3,19 @@ namespace Controllers\Admin;
 
 use Dao\Security\Estados;
 
-class Pedido extends \Controllers\PublicController
+class Pedido extends \Controllers\PrivateController
 {
-   /* public function __construct()
+    public function __construct()
     {
-        
+        /*
         $userInRole = \Utilities\Security::isInRol(
             \Utilities\Security::getUserId(),
-            "ADMIN"
+            "ADMINISTRADOR"
         );
+        */
         
         parent::__construct();
-    }*/
+    }
 
     private $VentaId = 0;
     private $VentaFecha = "";

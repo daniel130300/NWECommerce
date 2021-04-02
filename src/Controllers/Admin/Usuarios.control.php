@@ -6,16 +6,18 @@
     {
         public function __construct()
         {
-            
+            /*
             $userInRole = \Utilities\Security::isInRol(
                 \Utilities\Security::getUserId(),
-                "ADMIN"
+                "ADMINISTRADOR"
             );
+            */
             
             parent::__construct();
         }
     
         private $UsuarioBusqueda = "";
+        
         public function run() :void
         {
             $dataview = array();
@@ -27,6 +29,7 @@
                 if(!empty($this->UsuarioBusqueda))
                 {
                     $dataview["items"] = \Dao\Security\Security::searchUsuarios($this->UsuarioBusqueda);
+                    \Utilities\Context::setContext("UsuarioBusqueda", $this->UsuarioBusqueda);
                 }
                 else
                 {

@@ -2,10 +2,22 @@
 
     namespace Controllers\Admin;
 
-    class RolesUsuarios extends \Controllers\PublicController
+    class RolesUsuarios extends \Controllers\PrivateController
     {
+        public function __construct()
+        {
+            /*
+            $userInRole = \Utilities\Security::isInRol(
+                \Utilities\Security::getUserId(),
+                "ADMINISTRADOR"
+            );
+            */
+            
+            parent::__construct();
+        }
 
         private $UsuarioBusqueda = "";
+        
         public function run() :void
         {
             $dataview = array();

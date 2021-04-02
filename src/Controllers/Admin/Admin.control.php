@@ -7,7 +7,7 @@ class Admin extends \Controllers\PrivateController
     {
         // $userInRole = \Utilities\Security::isInRol(
         //     \Utilities\Security::getUserId(),
-        //     "ADMIN"
+        //     "ADMINISTRADOR"
         // );
         parent::__construct();
     }

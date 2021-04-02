@@ -17,12 +17,12 @@ class FuncionesRoles extends \Dao\Table
         return self::obtenerUnRegistro($sqlstr, array("RolId"=>$RolId, "FuncionId"=>$FuncionId));
     }
 
-    public static function insert($RolId, $FuncionId, $FuncionExp)
+    public static function insert($RolId, $FuncionId)
     {
         $insstr = "INSERT INTO funcionesroles VALUES (:RolId, :FuncionId, :FuncionRolEst, :FuncionExp);";
         return self::executeNonQuery(
             $insstr,
-            array("RolId"=>$RolId, "FuncionId"=>$FuncionId, "FuncionRolEst"=>Estados::ACTIVO, "FuncionExp"=>$FuncionExp)
+            array("RolId"=>$RolId, "FuncionId"=>$FuncionId, "FuncionRolEst"=>Estados::ACTIVO, "FuncionExp"=>(date('Y-m-d', time() + 155520000)))  //5*12*30*24*60*60 (y m d h mi s)))
         );
     }
 

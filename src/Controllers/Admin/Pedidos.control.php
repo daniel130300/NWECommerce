@@ -1,20 +1,21 @@
 <?php 
 namespace Controllers\Admin;
 
-class Pedidos extends \Controllers\PublicController
+class Pedidos extends \Controllers\PrivateController
 {
     private $UsuarioBusqueda = "";
 
-   /* public function __construct()
+    public function __construct()
     {
-        
+        /*
         $userInRole = \Utilities\Security::isInRol(
             \Utilities\Security::getUserId(),
-            "ADMIN"
+            "ADMINISTRADOR"
         );
+        */
         
         parent::__construct();
-    }*/
+    }
 
     public function run() :void
     {

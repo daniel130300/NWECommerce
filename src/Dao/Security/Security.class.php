@@ -16,7 +16,7 @@
     {
         public static function getAll()
         {
-            return self::obtenerRegistros("SELECT * FROM usuarios;", array());
+            return self::obtenerRegistros("SELECT * FROM usuarios ORDER BY UsuarioTipo;;", array());
         }
 
         static public function insertUsuarioCliente($UsuarioEmail, $UsuarioNombre, $UsuarioPswd)
@@ -294,7 +294,6 @@
             );
         }
         
-
         static public function getRolesByUsuario($UsuarioId, $RolId)
         {
             $sqlstr = "SELECT * FROM roles a INNER JOIN 
@@ -330,7 +329,7 @@
             $sqlstr = "SELECT * FROM usuarios WHERE UsuarioEmail LIKE :UsuarioBusqueda
             OR UsuarioNombre LIKE :UsuarioBusqueda OR UsuarioFching LIKE :UsuarioBusqueda 
             OR UsuarioPswdEst LIKE :UsuarioBusqueda OR UsuarioPswdExp LIKE :UsuarioBusqueda 
-            OR UsuarioEst LIKE :UsuarioBusqueda OR UsuarioTipo LIKE :UsuarioBusqueda";
+            OR UsuarioEst LIKE :UsuarioBusqueda OR UsuarioTipo LIKE :UsuarioBusqueda ORDER BY UsuarioTipo;";
             
             return self::obtenerRegistros($sqlstr, array("UsuarioBusqueda"=>"%".$UsuarioBusqueda."%"));
         }

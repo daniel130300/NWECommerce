@@ -3,18 +3,19 @@ namespace Controllers\Admin;
 
 class Categorias extends \Controllers\PrivateController
 {
-    private $UsuarioBusqueda = "";
-
     public function __construct()
     {
-        
+        /*
         $userInRole = \Utilities\Security::isInRol(
             \Utilities\Security::getUserId(),
-            "ADMIN"
+            "ADMINISTRADOR"
         );
+        */
         
         parent::__construct();
     }
+    
+    private $UsuarioBusqueda = "";
 
     public function run() :void
     {

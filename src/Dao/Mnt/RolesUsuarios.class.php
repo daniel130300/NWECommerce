@@ -9,7 +9,7 @@ class RolesUsuarios extends \Dao\Table
     public static function getAll()
     {
         return self::obtenerRegistros("SELECT ru.*, u.UsuarioNombre, u.UsuarioEmail, u.UsuarioTipo 
-        FROM rolesusuarios ru INNER JOIN usuarios u ON ru.UsuarioId = u.UsuarioId;", array());
+        FROM rolesusuarios ru INNER JOIN usuarios u ON ru.UsuarioId = u.UsuarioId ORDER BY u.UsuarioTipo;", array());
     }
 
     public static function getOne($UsuarioId, $RolId)

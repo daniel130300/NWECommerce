@@ -2,8 +2,20 @@
 
 namespace Controllers\Admin;
 
-class FuncionRol extends \Controllers\PublicController
+class FuncionRol extends \Controllers\PrivateController
 {
+    public function __construct()
+    {
+        /*
+        $userInRole = \Utilities\Security::isInRol(
+            \Utilities\Security::getUserId(),
+            "ADMINISTRADOR"
+        );
+        */
+        
+        parent::__construct();
+    }
+    
     private $RolId = 0;
     private $RolId2 = "";
     private $FuncionId = "";
@@ -65,7 +77,7 @@ class FuncionRol extends \Controllers\PublicController
                 switch ($this->mode)
                 {
                     case "INS":
-                        if (\Dao\Mnt\FuncionesRoles::insert($this->RolId2, $this->FuncionId2, $this->FuncionExp)) 
+                        if (\Dao\Mnt\FuncionesRoles::insert($this->RolId2, $this->FuncionId2)) 
                         {
                             \Utilities\Site::redirectToWithMsg(
                                 "index.php?page=admin_funcionesroles",
@@ -134,14 +146,14 @@ class FuncionRol extends \Controllers\PublicController
             }
         }
 
-        if($this->mode == "INS" || $this->mode == "UPD")
+        if($this->mode == "UPD")
         {
             if (\Utilities\Validators::IsEmpty($this->FuncionExp)) 
             {
                 $this->aErrors[] = "La fecha de expiración no puede ir vacía.";
             }
         }
-        
+
         $this->hasErrors = (count($this->aErrors) > 0);
         $this->_setViewData();
     }

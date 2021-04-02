@@ -55,10 +55,12 @@
           </div>
           {{endif notDisplayIns}}
 
+          {{if notDisplayIns}}
           <div class="form-group col-md-4">
             <label for="FuncionExp">Fecha de expiración</label>
             <input type="date" class="form-control" id="FuncionExp" name="FuncionExp" value="{{FuncionExp}}" min="{{minimumDate}}" {{if readonly}}disabled{{endif readonly}}>
           </div>
+          {{endif notDisplayIns}}
 
           {{if hasErrors}}
           <section>

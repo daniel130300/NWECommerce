@@ -2,8 +2,20 @@
 
 namespace Controllers\Admin;
 
-class RolUsuario extends \Controllers\PublicController
+class RolUsuario extends \Controllers\PrivateController
 {
+    public function __construct()
+    {
+        /*
+        $userInRole = \Utilities\Security::isInRol(
+            \Utilities\Security::getUserId(),
+            "ADMINISTRADOR"
+        );
+        */
+        
+        parent::__construct();
+    }
+
     private $UsuarioId = 0;
     private $UsuarioId2 = "";
     private $RolId = "";
@@ -25,6 +37,7 @@ class RolUsuario extends \Controllers\PublicController
         "DEL" => "Eliminar Usuario: %s Rol: %s",
         "DSP" => "Visualizar Usuario: %s Rol: %s"
     );
+    
     private $minimumDate = "";
 
     private $onlyDisplayIns = true;

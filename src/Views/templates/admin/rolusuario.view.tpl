@@ -9,7 +9,7 @@
         {{if notDisplayIns}}
         <div class="form-group col-md-2">
             <label for="FuncionId">Código Usuario</label>
-            <input type="hidden" class="form-control" id="UsuarioId" name="FuncionId" value="{{UsuarioId}}"/>
+            <input type="hidden" class="form-control" id="UsuarioId" name="UsuarioId" value="{{UsuarioId}}"/>
             <input readonly type="text" class="form-control" name="UsuarioIdDummy" value="{{UsuarioId}}"/>
         </div>
 

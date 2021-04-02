@@ -5,13 +5,14 @@ namespace Controllers\Admin;
 class Usuario extends \Controllers\PrivateController
 {
     public function __construct()
-    {   
-        
+    {
+        /*
         $userInRole = \Utilities\Security::isInRol(
             \Utilities\Security::getUserId(),
-            "ADMIN"
+            "ADMINISTRADOR"
         );
-
+        */
+        
         parent::__construct();
     }
 
