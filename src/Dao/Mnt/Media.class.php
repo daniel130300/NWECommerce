@@ -12,7 +12,7 @@ class Media extends \Dao\Table
 
     public static function insert($MediaDoc, $MediaPath)
     {
-        $ProdId = self::obtenerRegistros("Select max(ProdId) as ProdId from productos;", array("ProdId"=>""));
+        $ProdId = self::obtenerRegistros("Select max(ProdId) as ProdId from productos;", array());
 
         foreach($ProdId as $item){
             $ProdId = $item["ProdId"];
@@ -42,13 +42,14 @@ class Media extends \Dao\Table
         );
     }
 
-    public static function delete($ProdId)
+    public static function delete($ProdId, $MediaId)
     {
-        $delsql = "DELETE from media where ProdId=:ProdId;";
+        $delsql = "DELETE from media where ProdId=:ProdId and MediaId=:MediaId;";
         return self::executeNonQuery(
             $delsql,
             array( 
-                "ProdId" => $ProdId
+                "ProdId" => $ProdId,
+                "MediaId" => $MediaId
             )
         );
     }

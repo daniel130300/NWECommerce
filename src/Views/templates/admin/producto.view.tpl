@@ -1,4 +1,4 @@
-<section class="container d-flex align-items-center justify-content-center vh-100">
+<section class="container d-flex align-items-center justify-content-center">
     <div class="card my-5 w-100">
         <div class="card-header">
             <h3 class="text-center">{{mode_dsc}}</h3>
@@ -62,7 +62,9 @@
                     </div>
                     {{endfor Media}}
                 </div>
+                {{if notDisplayDel}}
                 <input type="file" class="mt-2" id="imagenes[]" name="imagenes[]" multiple>
+                {{endif notDisplayDel}}
             </div>
             {{if hasErrors}}
             <section>
