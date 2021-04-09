@@ -12,7 +12,7 @@ class Media extends \Dao\Table
 
     public static function insert($MediaDoc, $MediaPath)
     {
-        $ProdId = self::obtenerRegistros("Select max(ProdId) as ProdId from productos;", array("ProdId"=>""));
+        $ProdId = self::obtenerRegistros("Select max(ProdId) as ProdId from productos;", array());
 
         foreach($ProdId as $item){
             $ProdId = $item["ProdId"];

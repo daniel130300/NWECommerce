@@ -7,11 +7,11 @@
 
   <!--FONTS & ICONS-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   
-  <!--BOOTSTRAP STYLESHEETS-->
-  <link href="public/css/estilos.css" rel="stylesheet">  
+  <!--BOOTSTRAP && CSS STYLESHEETS-->
+  <link rel="stylesheet" href="public/css/estilos.css" >  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
   <!--BOOTSTRAP SCRIPTS-->
@@ -30,6 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
+          <img class="mr-3" src="public\img\logo.jpg" style="height:40px; border-radius: 20%;">
           {{SITE_TITLE}}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +42,7 @@
               <a class="nav-link" href="index.php?page=index"><i class="fas fa-home mx-2"></i>Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=index"><i class="fas fa-list-alt mx-2"></i>Productos</a>
+              <a class="nav-link" href="index.php?page=catalogoproductos&PageIndex=1"><i class="fas fa-list-alt mx-2"></i>Productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php?page=sec_login"><i class="fas fa-sign-in-alt mx-2"></i>Iniciar sesión</a>

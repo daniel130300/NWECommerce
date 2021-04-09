@@ -38,7 +38,6 @@ class Producto extends \Controllers\PublicController
         "DSP" => "Visualizar Código: %s Nombre: %s"
     );
 
-    
     private $readonly = "";
     private $showaction= true;
     private $notDisplayIns= false;
@@ -50,6 +49,7 @@ class Producto extends \Controllers\PublicController
     {
         $this->mode = isset($_GET["mode"])?$_GET["mode"]:"";
         $this->ProdId = isset($_GET["ProdId"])?$_GET["ProdId"]:"";
+
         if (!$this->isPostBack()) 
         {
             if ($this->mode !== "INS") 
@@ -154,7 +154,6 @@ class Producto extends \Controllers\PublicController
                                     {
                                         if (\Dao\Mnt\Media::update("producto_default.jpg", $this->MediaPath."producto_default.jpg", $this->ProdId))
                                         {
-
                                             \Utilities\Site::redirectToWithMsg(
                                                 "index.php?page=admin_productos",
                                                 "¡Producto Actualizado Satisfactoriamente!"
@@ -163,7 +162,6 @@ class Producto extends \Controllers\PublicController
                                     }
                                 }
                             }
-                            
 
                             if ($actualizo)
                             {
@@ -220,6 +218,7 @@ class Producto extends \Controllers\PublicController
     private function _load()
     {
         $_data = \Dao\Mnt\Productos::getOne($this->ProdId);
+
         if ($_data) 
         {
             $this->ProdId = $_data["ProdId"];
@@ -229,21 +228,19 @@ class Producto extends \Controllers\PublicController
             $this->ProdPrecioCompra = $_data["ProdPrecioCompra"];
             $this->ProdEst = $_data["ProdEst"];
             $this->ProdStock = $_data["ProdStock"];
-            
 
             $_dataMedia = \Dao\Mnt\Media::getAll($this->ProdId);
             if ($_dataMedia){
                 $this->Media = $_dataMedia;
-                $this->_setViewData();
             }
-            
+
+            $this->_setViewData();  
         }
     
     }
 
     private function _loadPostData()
     {
-        
         $this->ProdId = isset($_POST["ProdId"]) ? $_POST["ProdId"] : 0 ;
         $this->ProdNombre = isset($_POST["ProdNombre"]) ? $_POST["ProdNombre"] : "" ;
         $this->ProdDescripcion = isset($_POST["ProdDescripcion"]) ? $_POST["ProdDescripcion"] : "";
@@ -271,7 +268,6 @@ class Producto extends \Controllers\PublicController
             }
 
         }
-        
         
         if (\Utilities\Validators::IsEmpty($this->ProdNombre)) 
         {
