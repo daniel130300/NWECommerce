@@ -6,10 +6,10 @@ use Dao\Dao;
 class VisualizarProducto extends \Controllers\PublicController
 {
     private $ProdId = 0;
-    private $ProdId2 = 0;
     private $ProdNombre = "";
     private $ProdDescripcion = "";
     private $ProdPrecioVenta = "";
+    private $ProdCantidad = "";
     private $PrimaryMediaDoc = "";
     private $PrimaryMediaPath = "";
     private $AllProductMedia = array(); 
@@ -18,18 +18,40 @@ class VisualizarProducto extends \Controllers\PublicController
 
     public function run() :void
     {
-        if(!$this->isPostBack()) 
+        $this->ProdId = isset($_GET["ProdId"])?$_GET["ProdId"]:0;
+
+        if($this->isPostBack()) 
         {
-            $this->ProdId = isset($_GET["ProdId"])?$_GET["ProdId"]:0;
-            $this->_load();
-            $dataview = get_object_vars($this);
-            \Views\Renderer::render("visualizarproducto", $dataview);
+            $this->ProdPrecioVenta = isset($_POST["ProdPrecioVenta"])?$_POST["ProdPrecioVenta"]:""; 
+            $this->ProdCantidad = isset($_POST["ProdCantidad"])?$_POST["ProdCantidad"]:""; 
+
+            $this->ProdPrecioVenta = floatval(str_replace(",","",$this->ProdPrecioVenta));
+
+            if(!\Utilities\Security::isLogged())
+            {
+                $_comprobar = \Dao\Client\CarritoAnonimo::comprobarProductoEnCarritoAnonimo(session_id(), $this->ProdId);
+
+                if(empty($_comprobar))
+                {
+                    if(\Dao\Client\CarritoAnonimo::insertarProductoCarritoAnonimo(session_id(), $this->ProdId, $this->ProdCantidad, $this->ProdPrecioVenta))
+                    {
+                        \Utilities\Site::redirectToWithMsg("index.php?page=catalogoproductos&PageIndex=1", "Producto Agregado al Carrito con Éxito");
+                    }
+                }
+                else
+                {
+                    if(\Dao\Client\CarritoAnonimo::deleteProductoCarritoAnonimo(session_id(), $this->ProdId))
+                    {
+                        \Dao\Client\CarritoAnonimo::insertarProductoCarritoAnonimo(session_id(), $this->ProdId, $this->ProdCantidad, $this->ProdPrecioVenta);
+                        \Utilities\Site::redirectToWithMsg("index.php?page=catalogoproductos&PageIndex=1", "Producto Agregado al Carrito con Éxito");
+                    }
+                }
+            }
         }
-        else
-        {
-            $this->ProdId2 =  isset($_POST["ProdId"])?$_POST["ProdId"]:"";
-            
-        } 
+
+        $this->_load();
+        $dataview = get_object_vars($this);
+        \Views\Renderer::render("visualizarproducto", $dataview);
     }
 
     private function _load()

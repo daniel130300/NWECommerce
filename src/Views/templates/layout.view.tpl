@@ -50,6 +50,9 @@
             <li class="nav-item">
               <a class="nav-link" href="index.php?page=sec_register">Regístrate</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?page=carrito"><i class="fas fa-shopping-cart mx-2"></i>Carrito</a>
+            </li>
           </ul>
         </div>
       </div>
