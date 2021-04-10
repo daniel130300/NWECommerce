@@ -62,7 +62,7 @@
             </ul>
             {{endif ADMINNAVIGATION}}
             
-            <ul class="navbar-nav">>
+            <ul class="navbar-nav">
               <li class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user mx-2"></i>

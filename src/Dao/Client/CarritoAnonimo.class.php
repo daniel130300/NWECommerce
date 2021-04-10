@@ -16,6 +16,18 @@ class CarritoAnonimo extends \Dao\Table
         return self::executeNonQuery($insstr, array("ClienteAnonimoId"=>$ClienteAnonimoId, "ProdId"=>$ProdId, "ProdCantidad"=>$ProdCantidad, "ProdPrecioVenta"=>$ProdPrecioVenta));
     }
 
+    public static function sumarProductoInventarioAnonimo($ProdId, $ProdCantidad)
+    {
+        $updstr = "UPDATE productos SET ProdStock = ProdStock + :ProdCantidad WHERE ProdId = :ProdId";
+        return self::executeNonQuery($updstr, array("ProdId"=>intval($ProdId), "ProdCantidad"=>$ProdCantidad));
+    }
+
+    public static function restarProductoInventarioAnonimo($ProdId, $ProdCantidad)
+    {
+        $updstr = "UPDATE productos SET ProdStock = ProdStock - :ProdCantidad WHERE ProdId = :ProdId";
+        return self::executeNonQuery($updstr, array("ProdId"=>intval($ProdId), "ProdCantidad"=>$ProdCantidad));
+    }
+
     public static function deleteProductoCarritoAnonimo($ClienteAnonimoId, $ProdId)
     {
         $delsql = "DELETE FROM carritocompraclienteanonimo WHERE ClienteAnonimoId = :ClienteAnonimoId AND ProdId = :ProdId;";

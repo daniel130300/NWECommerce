@@ -26,7 +26,8 @@
 
                 <td width="5%">
                     <form method="POST" action="index.php?page=carrito">
-                        <input type="hidden" id="Prodid" name="ProdId" value="{{ProdId}}">
+                        <input type="hidden" id="ProdId" name="ProdId" value="{{ProdId}}">
+                        <input type="hidden" id="ProdCantidad" name="ProdCantidad" value="{{ProdCantidad}}">
                         <button class="btn btn-danger" type="submit">Eliminar</button>
                     </form>
                 </td>

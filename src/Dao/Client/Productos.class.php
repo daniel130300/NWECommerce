@@ -23,7 +23,7 @@ class Productos extends \Dao\Table
 
     public static function getOne($ProdId)
     {
-        $sqlstr = "SELECT * FROM productos p INNER JOIN media m on p.ProdId = m.ProdId WHERE p.ProdId = :ProdId AND ProdStock > 0 AND ProdEst = 'ACT' GROUP BY p.ProdId;";
+        $sqlstr = "SELECT * FROM productos p INNER JOIN media m on p.ProdId = m.ProdId WHERE p.ProdId = :ProdId AND ProdEst = 'ACT' GROUP BY p.ProdId;";
         return self::obtenerUnRegistro($sqlstr, array("ProdId"=>$ProdId));
     }
 
