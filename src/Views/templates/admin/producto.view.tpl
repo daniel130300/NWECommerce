@@ -62,7 +62,9 @@
                     </div>
                     {{endfor Media}}
                 </div>
+                {{if notDisplayDel}}
                 <input type="file" class="mt-2" id="imagenes[]" name="imagenes[]" multiple>
+                {{endif notDisplayDel}}
             </div>
             {{if hasErrors}}
             <section>

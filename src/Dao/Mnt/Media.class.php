@@ -42,13 +42,14 @@ class Media extends \Dao\Table
         );
     }
 
-    public static function delete($ProdId)
+    public static function delete($ProdId, $MediaId)
     {
-        $delsql = "DELETE from media where ProdId=:ProdId;";
+        $delsql = "DELETE from media where ProdId=:ProdId and MediaId=:MediaId;";
         return self::executeNonQuery(
             $delsql,
             array( 
-                "ProdId" => $ProdId
+                "ProdId" => $ProdId,
+                "MediaId" => $MediaId
             )
         );
     }

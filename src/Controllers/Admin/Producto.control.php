@@ -41,6 +41,7 @@ class Producto extends \Controllers\PublicController
     private $readonly = "";
     private $showaction= true;
     private $notDisplayIns= false;
+    private $notDisplayDel= true;
 
     private $hasErrors = false;
     private $aErrors = array();
@@ -116,50 +117,62 @@ class Producto extends \Controllers\PublicController
 
                         if (\Dao\Mnt\Productos::update($this->ProdNombre, $this->ProdDescripcion, $this->ProdPrecioVenta, $this->ProdPrecioCompra, $this->ProdEst, $this->ProdStock, $this->ProdId)) 
                         {
- 
+
                             $_datosMedia = \Dao\Mnt\Media::getAll($this->ProdId);
 
-                            $num = count($this->Media['name']);
-                            
-                            if ($num >= 1)
+                            foreach ($this->Media['name'] as $item => $name)
                             {
-                                foreach ($_datosMedia as $_media)
+                                
+                                if (!empty($_FILES['imagenes']['name'][$item]))
                                 {
-                                    if ($_media['MediaPath'] == "public/img/producto_default.jpg")
-                                    {
-                                        \Dao\Mnt\Media::delete($this->ProdId);
-                                        $elimino = true;
+                                    foreach ($_datosMedia as $_mediaDB)
+                                    {   
+                                        if ($_mediaDB['MediaPath'] == "public/img/producto_default.jpg")
+                                        {
+                                            \Dao\Mnt\Media::delete($this->ProdId, $_mediaDB['MediaId']);
+                                        }
+                                        else
+                                        {
+                                            \Dao\Mnt\Media::delete($this->ProdId, $_mediaDB['MediaId']);
+                                            unlink("public/img/productos/".$_mediaDB['MediaDoc']);
+                                        }
                                     }
-                                    else
-                                    {
-                                        \Dao\Mnt\Media::delete($this->ProdId);
-                                        unlink("public/img/productos/".$_media['MediaDoc']);
-                                        $elimino = true;
-                                    }
-                                }
 
-                                foreach ($this->Media['name'] as $item => $name)
-                                {
-                                    
                                     if ( !empty($this->Media['name'][$item]) )
                                     {
                                         if (\Dao\Mnt\Media::update($this->Media['name'][$item], $this->MediaPath.$this->Media['name'][$item], $this->ProdId))
                                         {  
-                                            
                                             move_uploaded_file($this->Media['tmp_name'][$item],$this->MediaPath.$this->Media['name'][$item]);
                                             $actualizo = true;
                                         }
+
                                     }
-                                    else
-                                    {
-                                        if (\Dao\Mnt\Media::update("producto_default.jpg", $this->MediaPath."producto_default.jpg", $this->ProdId))
+
+                                }
+                                else
+                                {
+                                    foreach ($_datosMedia as $_mediaDB)
+                                    {   
+                                        if (!empty($_mediaDB['MediaDoc']))
                                         {
                                             \Utilities\Site::redirectToWithMsg(
                                                 "index.php?page=admin_productos",
                                                 "¡Producto Actualizado Satisfactoriamente!"
                                             );
                                         }
+                                        else
+                                        {
+                                            if (\Dao\Mnt\Media::update("producto_default.jpg", "public/img/producto_default.jpg", $this->ProdId))
+                                            {
+
+                                                \Utilities\Site::redirectToWithMsg(
+                                                    "index.php?page=admin_productos",
+                                                    "¡Producto Actualizado Satisfactoriamente!"
+                                                );
+                                            }
+                                        }
                                     }
+                                    
                                 }
                             }
 
@@ -185,12 +198,12 @@ class Producto extends \Controllers\PublicController
                             {
                                 if ($_media['MediaPath'] == "public/img/producto_default.jpg")
                                 {
-                                    \Dao\Mnt\Media::delete($this->ProdId);
+                                    \Dao\Mnt\Media::delete($this->ProdId, $_media['MediaId']);
                                     $elimino = true;
                                 }
                                 else
                                 {
-                                    \Dao\Mnt\Media::delete($this->ProdId);
+                                    \Dao\Mnt\Media::delete($this->ProdId, $_media['MediaId']);
                                     unlink("public/img/productos/".$_media['MediaDoc']);
                                     $elimino = true;
                                 }
@@ -233,8 +246,7 @@ class Producto extends \Controllers\PublicController
             if ($_dataMedia){
                 $this->Media = $_dataMedia;
             }
-
-            $this->_setViewData();  
+            $this->_setViewData();
         }
     
     }
@@ -249,9 +261,11 @@ class Producto extends \Controllers\PublicController
         $this->ProdEst = isset($_POST["ProdEst"]) ? $_POST["ProdEst"] : "";
         $this->ProdStock = isset($_POST["ProdStock"]) ? $_POST["ProdStock"] : 0;
         $this->MediaId = isset($_POST["MediaId"]) ? $_POST["MediaId"] : 0;
-
+        
+        
         if (($_FILES['imagenes']['name'] != null)) 
         {
+            
             foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) 
             {
                 if ( !empty($_FILES['imagenes']['name'][$key]) ) 
@@ -310,6 +324,7 @@ class Producto extends \Controllers\PublicController
         );
 
         $this->notDisplayIns = ($this->mode=="INS") ? false : true;
+        $this->notDisplayDel = ($this->mode=="DEL") ? false : true;
         $this->readonly = ($this->mode =="DEL" || $this->mode=="DSP") ? "readonly":"";
         $this->showaction = !($this->mode == "DSP");
     }
