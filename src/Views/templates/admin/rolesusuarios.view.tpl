@@ -1,8 +1,6 @@
 <section class="container-fluid">
-
-
-    {{UsuarioBusqueda}}
-    <h3 class="my-4 text-center">Gestión de Roles para Usuarios</h3>
+  
+    <h3 class="my-4 text-center">Gestión de Roles para Usuarios Administrativos</h3>
     
     <div class="d-flex-inline">
       <form method="POST" action="index.php?page=admin_rolesusuarios">

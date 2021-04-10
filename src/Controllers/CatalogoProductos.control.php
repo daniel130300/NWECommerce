@@ -31,7 +31,16 @@ class CatalogoProductos extends \Controllers\PublicController
         $this->_load($this->UsuarioBusqueda);
 
         $dataview = get_object_vars($this);
-        \Views\Renderer::render("catalogoproductos", $dataview);
+
+        $layout = "layout.view.tpl";
+
+        if(\Utilities\Security::isLogged())
+        {
+            $layout = "privatelayout.view.tpl";
+            \Utilities\Nav::setNavContext();
+        }
+
+        \Views\Renderer::render("catalogoproductos", $dataview, $layout);
     }
 
     private function _load($busqueda="")

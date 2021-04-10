@@ -23,10 +23,6 @@ class Site
                 {
                     $pageRequest = "admin\\admin";
                 }
-                else
-                {
-                    $pageRequest = "client\\client";
-                }
             }
         }
         if (isset($_GET["page"])) {

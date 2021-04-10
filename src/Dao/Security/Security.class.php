@@ -19,7 +19,7 @@
             return self::obtenerRegistros("SELECT * FROM usuarios ORDER BY UsuarioTipo;;", array());
         }
 
-        static public function insertUsuarioCliente($UsuarioEmail, $UsuarioNombre, $UsuarioPswd)
+        static public function insertUsuarioFromCliente($UsuarioEmail, $UsuarioNombre, $UsuarioPswd)
         {
             if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) 
             {
@@ -58,7 +58,7 @@
             return self::executeNonQuery($sqlIns, $usuario);
         }
 
-        static public function insertUsuarioAdmin($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioTipo)
+        static public function insertUsuarioFromAdmin($UsuarioEmail, $UsuarioNombre, $UsuarioPswd, $UsuarioTipo)
         {
             if (!\Utilities\Validators::IsValidEmail($UsuarioEmail)) 
             {

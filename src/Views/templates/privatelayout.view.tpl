@@ -34,33 +34,33 @@
           <img class="mr-3" src="public\img\logo.jpg" style="height:40px; border-radius: 20%;">
           {{SITE_TITLE}}
         </a>
-
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
 
-            <ul class="navbar-nav">>
+            {{foreach CLIENTNAVIGATION}}
+              <li class="nav-item">
+                <a class="nav-link" href="{{nav_url}}">{{if nav_icon}}<i class="{{nav_icon}}"></i>{{endif nav_icon}}{{nav_label}}</a>
+              </li>
+            {{endfor CLIENTNAVIGATION}}
+
+            {{if ADMINNAVIGATION}}
+            <ul class="navbar-nav">
               <li class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Gestión de la Plataforma
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-                    {{foreach NAVIGATION}}
+                    {{foreach ADMINNAVIGATION}}
                       <a class="dropdown-item" href="{{nav_url}}">{{if nav_icon}}<i class="{{nav_icon}}"></i>{{endif nav_icon}}{{nav_label}}</a>
-                    {{endfor NAVIGATION}}
+                    {{endfor ADMINNAVIGATION}}
                   </div>
               </li>
             </ul>
-            
-            <!--
-            {{foreach NAVIGATION}}
-            <li class="nav-item">
-              <a class="nav-link" href="{{nav_url}}">{{if nav_icon}}<i class="{{nav_icon}}"></i>{{endif nav_icon}}{{nav_label}}</a>
-            </li>
-            {{endfor NAVIGATION}}
-            -->
+            {{endif ADMINNAVIGATION}}
             
             <ul class="navbar-nav">>
               <li class="nav-item dropdown">

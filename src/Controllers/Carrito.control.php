@@ -23,8 +23,17 @@ class Carrito extends \Controllers\PublicController
                 $this->eliminarProductoCarritoAnonimo();
             }
         }
+
+        $layout = "layout.view.tpl";
+
+        if(\Utilities\Security::isLogged())
+        {
+            $layout = "privatelayout.view.tpl";
+            \Utilities\Nav::setNavContext();
+        }
+
         $allViewData= get_object_vars($this);
-        \Views\Renderer::render("carrito", $allViewData);
+        \Views\Renderer::render("carrito", $allViewData, $layout);
     }
 
     private function mostarProductosCarritoAnonimo()

@@ -17,14 +17,16 @@
         
         public static function setNavContext()
         {
-            $tmpNAVIGATION = array();
-
+            $adminNAVIGATION = array();
+            $clientNAVIGATION = array();
 
             $userID = \Utilities\Security::getUserId();
+            $usuario = \Dao\Security\Security::getUsuariobyId($userID);
 
+            //TODA LA NAVEGACIÓN PARA EL O LOS ADMINS
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Admin")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_admin",
                     "nav_icon"=>"",
                     "nav_label"=>"Inicio"
@@ -33,7 +35,7 @@
 
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Usuarios")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_usuarios",
                     "nav_icon"=>"",
                     "nav_label"=>"Usuarios"
@@ -42,34 +44,34 @@
             
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\RolesUsuarios")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_rolesusuarios",
                     "nav_icon"=>"",
-                    "nav_label"=>"Roles para Usuarios"
+                    "nav_label"=>"Roles para Usuarios Administrativos"
                 );
             }
 
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Roles")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_roles",
                     "nav_icon"=>"",
-                    "nav_label"=>"Roles"
+                    "nav_label"=>"Roles Administrativos"
                 );
             }
 
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\FuncionesRoles")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_funcionesroles",
                     "nav_icon"=>"",
-                    "nav_label"=>"Funciones para Roles"
+                    "nav_label"=>"Funciones para Roles Administrativos"
                 );
             }
 
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Categorias")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_categorias",
                     "nav_icon"=>"",
                     "nav_label"=>"Categorías"
@@ -78,23 +80,38 @@
 
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Pedidos")) 
             {
-                $tmpNAVIGATION[] = array(
+                $adminNAVIGATION[] = array(
                     "nav_url"=>"index.php?page=admin_pedidos",
                     "nav_icon"=>"",
                     "nav_label"=>"Pedidos Pendientes"
                 );
             }
 
-            if (\Utilities\Security::isAuthorized($userID, "Controllers\Client\Client")) 
-            {
-                $tmpNAVIGATION[] = array(
-                    "nav_url"=>"index.php?page=client_client",
-                    "nav_icon"=>"",
+            //TODA LA NAVEGACIÓN PARA LOS CLIENTES
+
+            if($usuario["UsuarioTipo"] === "PBL")
+            {   
+                $clientNAVIGATION[] = array(
+                    "nav_url"=>"index.php",
+                    "nav_icon"=>"fas fa-home mx-2",
                     "nav_label"=>"Inicio"
                 );
+
+                $clientNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=catalogoproductos&PageIndex=1",
+                    "nav_icon"=>"fas fa-list-alt mx-2",
+                    "nav_label"=>"Productos"
+                );
+
+                $clientNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=carrito",
+                    "nav_icon"=>"fas fa-shopping-cart mx-2",
+                    "nav_label"=>"Carrito"
+                );
             }
-            
-            \Utilities\Context::setContext("NAVIGATION", $tmpNAVIGATION);
+
+            \Utilities\Context::setContext("ADMINNAVIGATION", $adminNAVIGATION);
+            \Utilities\Context::setContext("CLIENTNAVIGATION", $clientNAVIGATION);
         } 
 
     }

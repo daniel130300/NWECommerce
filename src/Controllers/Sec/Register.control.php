@@ -58,7 +58,7 @@ class Register extends PublicController
             {
                 try
                 {
-                    if (\Dao\Security\Security::insertUsuarioCliente($this->txtEmail, $this->txtNombre, $this->txtPswd)) 
+                    if (\Dao\Security\Security::insertUsuarioFromCliente($this->txtEmail, $this->txtNombre, $this->txtPswd)) 
                     {
                         \Utilities\Site::redirectToWithMsg("index.php?page=sec_login", "¡Usuario Registrado Satisfactoriamente!");
                     }

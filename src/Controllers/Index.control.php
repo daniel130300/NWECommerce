@@ -47,12 +47,12 @@ class Index extends PublicController
             $dataview["items"][$key]["ProdPrecioVenta"] = number_format($precioFinal, 2);
         }
 
-
         $layout = "layout.view.tpl";
 
         if(\Utilities\Security::isLogged())
         {
             $layout = "privatelayout.view.tpl";
+            \Utilities\Nav::setNavContext();
         }
 
         \Views\Renderer::render("index", $dataview, $layout);

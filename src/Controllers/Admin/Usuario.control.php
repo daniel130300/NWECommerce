@@ -76,7 +76,7 @@ class Usuario extends \Controllers\PrivateController
                 switch ($this->mode)
                 {
                     case "INS":
-                        if (\Dao\Security\Security::insertUsuarioAdmin($this->UsuarioEmail, $this->UsuarioNombre, $this->UsuarioPswd, $this->UsuarioTipo)) 
+                        if (\Dao\Security\Security::insertUsuarioFromAdmin($this->UsuarioEmail, $this->UsuarioNombre, $this->UsuarioPswd, $this->UsuarioTipo)) 
                         {
                             \Utilities\Site::redirectToWithMsg(
                                 "index.php?page=admin_usuarios",

@@ -60,6 +60,7 @@ abstract class PrivateController extends PublicController
         }
 
         \Utilities\Nav::setNavContext();
+
     }
 }
 
