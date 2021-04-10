@@ -13,7 +13,6 @@ class Venta extends \Controllers\PrivateController
             "ADMINISTRADOR"
         );*/
         
-        
         parent::__construct();
     }
 

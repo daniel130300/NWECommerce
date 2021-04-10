@@ -2,18 +2,17 @@
 
 namespace Controllers\Admin;
 
-class Producto extends \Controllers\PublicController
+class Producto extends \Controllers\PrivateController
 {
     public function __construct()
     {
-        /*
+        
         $userInRole = \Utilities\Security::isInRol(
             \Utilities\Security::getUserId(),
             "ADMINISTRADOR"
         );
-        */
         
-        //parent::__construct();
+        parent::__construct();
     }
 
     private $ProdId = 0;
@@ -91,7 +90,7 @@ class Producto extends \Controllers\PublicController
                                 {
                                     if (\Dao\Mnt\Media::insert("producto_default.jpg", "public/img/producto_default.jpg"))
                                     {
-
+                                        
                                         \Utilities\Site::redirectToWithMsg(
                                             "index.php?page=admin_productos",
                                             "¡Producto Agregado Satisfactoriamente!"
@@ -216,8 +215,6 @@ class Producto extends \Controllers\PublicController
                                     "¡Producto Eliminado Satisfactoriamente!"
                                 );
                             }
-                            
-
                         }
                     break;
                 }

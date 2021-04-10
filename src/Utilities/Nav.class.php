@@ -68,6 +68,15 @@
                     "nav_label"=>"Funciones para Roles Administrativos"
                 );
             }
+            
+            if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Productos")) 
+            {
+                $adminNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=admin_productos",
+                    "nav_icon"=>"",
+                    "nav_label"=>"Catálogo de Productos"
+                );
+            }
 
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Categorias")) 
             {
@@ -84,6 +93,15 @@
                     "nav_url"=>"index.php?page=admin_pedidos",
                     "nav_icon"=>"",
                     "nav_label"=>"Pedidos Pendientes"
+                );
+            }
+
+            if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Ventas")) 
+            {
+                $adminNAVIGATION[] = array(
+                    "nav_url"=>"index.php?page=admin_ventas",
+                    "nav_icon"=>"",
+                    "nav_label"=>"Historial de Ventas"
                 );
             }
 

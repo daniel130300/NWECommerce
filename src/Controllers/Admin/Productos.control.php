@@ -2,18 +2,17 @@
 
     namespace Controllers\Admin;
 
-    class Productos extends \Controllers\PublicController
+    class Productos extends \Controllers\PrivateController
     {
         public function __construct()
         {
-            /*
+            
             $userInRole = \Utilities\Security::isInRol(
                 \Utilities\Security::getUserId(),
                 "ADMINISTRADOR"
             );
-            */
             
-            //parent::__construct();
+            parent::__construct();
         }
     
         private $ProductoBusqueda = "";
