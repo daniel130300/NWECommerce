@@ -22,15 +22,16 @@ class DireccionEntrega extends PublicController
             $this->_loadPostData();
         }
 
-        if(!empty($getProductos))
+        if(empty($UsuarioId))
         {
-            $dataview = get_object_vars($this);
-            \Views\Renderer::render("direccionentrega", $dataview);
+            \Utilities\Site::redirectToWithMsg("index.php?page=sec_login", "Es necesario iniciar sesión para continuar");
         }
         else
         {
             \Utilities\Site::redirectTo("index.php");
         }
+        //$dataview = get_object_vars($this);
+            //\Views\Renderer::render("direccionentrega", $dataview);
     }
 
     private function _loadPostData()

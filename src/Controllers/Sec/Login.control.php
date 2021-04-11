@@ -60,6 +60,7 @@ class Login extends \Controllers\PublicController
                                 \Utilities\Context::getContextByKey("redirto")
                             );
                         } else {
+                            $this->transferirArticulosCarritoAnonimo();
                             \Utilities\Site::redirectTo("index.php");
                         }
                     }
@@ -76,6 +77,35 @@ class Login extends \Controllers\PublicController
         }
         $dataView = get_object_vars($this);
         \Views\Renderer::render("security/login", $dataView);
+    }
+
+    private function transferirArticulosCarritoAnonimo() : void
+    {
+        $userId = \Utilities\Security::getUserId();
+
+        $ArticulosCarritoAnonimo = \Dao\Client\CarritoAnonimo::getProductosCarritoAnonimo(session_id());
+
+        if(!empty($ArticulosCarritoAnonimo))
+        {
+            foreach($ArticulosCarritoAnonimo as $articulo)
+            {
+                $_comprobar = \Dao\Client\CarritoUsuario::comprobarProductoEnCarritoUsuario($userId,$articulo["ProdId"]);
+                if(empty($_comprobar))
+                {
+                    \Dao\Client\CarritoUsuario::insertarProductoCarritoUsuario($userId,$articulo["ProdId"],$articulo["ProdCantidad"],$articulo["ProdPrecioVenta"]);   
+                }
+                else
+                {
+                    \Dao\Client\CarritoUsuario::sumarProductoInventarioAnonimo($articulo["ProdId"], $_comprobar["ProdCantidad"]);
+                    \Dao\Client\CarritoUsuario::deleteProductoCarritoUsuario($userId, $articulo["ProdId"]);
+                    \Dao\Client\CarritoUsuario::insertarProductoCarritoUsuario($userId,$articulo["ProdId"],$articulo["ProdCantidad"],$articulo["ProdPrecioVenta"]);
+                }
+            }
+
+            \Dao\Client\CarritoAnonimo::deleteAllCarritoAnonimo(session_id());
+            \Utilities\Site::redirectTo("index.php?page=carrito");
+        }
+
     }
 }
 ?>
