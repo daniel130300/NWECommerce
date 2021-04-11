@@ -1,4 +1,4 @@
-<section class="container d-flex align-items-center justify-content-center vh-100">
+<section class="container d-flex align-items-center justify-content-center min-vh-100">
     <div class="card my-5 w-100">
       <div class="card-header">
         <h3 class="text-center">{{mode_dsc}}</h3>
@@ -28,6 +28,16 @@
             </select>
           </div>
           {{endif notDisplayIns}}
+
+          {{if hasErrors}}
+          <section>
+              <ul>
+                {{foreach aErrors}}
+                  <li class="text-danger my-2">{{this}}</li>
+                {{endfor aErrors}}
+              </ul>
+          </section>
+          {{endif hasErrors}}
 
           <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
           {{if showaction}}

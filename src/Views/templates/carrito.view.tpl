@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container min-vh-100">
     <h3 class="my-4">Detalle de la Orden</h3>
     <table class="table table-bordered">
         <thead>
@@ -43,6 +43,24 @@
                 <input type="text" readonly class="form-control" id="CarritoTotal" value="{{Total}}">
           </div>
         </div>
-      </form>
+    </form>
+
+    <!--
+    <form action="index.php" method="get">
+        <input type="hidden" name="page" value="admin_categoria"/>
+        <input type="hidden" name="mode" value="UPD" />
+        <input type="hidden" name="CategoriaId" value={{CategoriaId}} />
+        <button type="submit" class="btn btn-primary my-1">Editar</button>
+    </form>
+    -->
+
+    {{if Items}}
+    <form method="GET" action="index.php">
+        <div class="form-group">
+            <input type="hidden" name="page" value="direccionentrega">
+            <button type="submit" class="btn btn-primary my-4">Realizar transacción</button>
+        </div>
+    </form>
+    {{endif Items}}
 
 </section>

@@ -33,6 +33,11 @@ class Validators {
         return preg_match("/^[0-9]+(\.[0-9]{1,2})?$/", $valor);
     }
 
+    public static function ValidarTelefonoCelular($valor)
+    {
+        return preg_match("/^(\+?\(?504\)?\s?)?[13456789]\d{3}-?\d{4}$/", $valor);
+    }
+
     private function __construct()
     {
         
