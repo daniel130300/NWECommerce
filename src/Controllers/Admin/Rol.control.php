@@ -121,11 +121,6 @@ class Rol extends \Controllers\PrivateController
             $this->aErrors[] = "La descripción del rol no puede ir vacía.";
         }
 
-        if (!\Utilities\Validators::ValidarSoloLetras($this->RolDsc)) 
-        {
-            $this->aErrors[] = "La descripción no es valida.";
-        }
-
         if($this->mode=="INS")
         {
             if(!empty(\Dao\Mnt\Roles::getOne(strtoupper($this->RolDsc))))
