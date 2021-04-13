@@ -43,8 +43,8 @@ class Checkout extends \Dao\Table
     {
         $VentaId = self::obtenerUnRegistro("Select max(VentaId) as VentaId from ventas;", array());
         $VentaId = $VentaId["VentaId"];
-        $insstr = "INSERT INTO ventasproductos VALUES (:ProdId, :VentaId, :VentasProdCantidad, :VentasProdPrecioVenta";
-        return self::executeNonQuery($insstr, array(":ProdId"=>intval($ProdId), "VentasProdCantidad"=>intval($VentasProdCantidad), "VentasProdPrecioVenta"=>intval($VentasProdPrecioVenta)));
+        $insstr = "INSERT INTO ventasproductos VALUES (:ProdId, :VentaId, :VentasProdCantidad, :VentasProdPrecioVenta);";
+        return self::executeNonQuery($insstr, array("ProdId"=>intval($ProdId), "VentaId"=>intval($VentaId), "VentasProdCantidad"=>intval($VentasProdCantidad), "VentasProdPrecioVenta"=>floatval($VentasProdPrecioVenta)));
     }
 
     public static function deleteAllCarritoUsuario($UsuarioId)

@@ -16,30 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bitacora`
+-- Table structure for table `ventasproductos`
 --
 
-DROP TABLE IF EXISTS `bitacora`;
+DROP TABLE IF EXISTS `ventasproductos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bitacora` (
-  `BitacoraId` int NOT NULL AUTO_INCREMENT,
-  `BitacoraFch` datetime NOT NULL,
-  `BitacoraPrograma` varchar(255) NOT NULL,
-  `BitacoraDescripcion` varchar(255) NOT NULL,
-  `BitacoraTipo` char(3) NOT NULL,
-  `BitacoraUsuario` int NOT NULL,
-  PRIMARY KEY (`BitacoraId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+CREATE TABLE `ventasproductos` (
+  `ProdId` int NOT NULL,
+  `VentaId` int NOT NULL,
+  `VentasProdCantidad` int NOT NULL,
+  `VentasProdPrecioVenta` decimal(9,2) NOT NULL,
+  PRIMARY KEY (`ProdId`,`VentaId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bitacora`
+-- Dumping data for table `ventasproductos`
 --
 
-LOCK TABLES `bitacora` WRITE;
-/*!40000 ALTER TABLE `bitacora` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bitacora` ENABLE KEYS */;
+LOCK TABLES `ventasproductos` WRITE;
+/*!40000 ALTER TABLE `ventasproductos` DISABLE KEYS */;
+INSERT INTO `ventasproductos` VALUES (2,7,1,3450.00),(2,11,1,3450.00),(12,7,1,16100.00),(13,12,1,2070.00),(15,7,1,9200.00),(16,11,1,4600.00),(17,7,1,5175.00),(17,14,1,5175.00);
+/*!40000 ALTER TABLE `ventasproductos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bitacora`
+-- Table structure for table `carritocompraclienteanonimo`
 --
 
-DROP TABLE IF EXISTS `bitacora`;
+DROP TABLE IF EXISTS `carritocompraclienteanonimo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bitacora` (
-  `BitacoraId` int NOT NULL AUTO_INCREMENT,
-  `BitacoraFch` datetime NOT NULL,
-  `BitacoraPrograma` varchar(255) NOT NULL,
-  `BitacoraDescripcion` varchar(255) NOT NULL,
-  `BitacoraTipo` char(3) NOT NULL,
-  `BitacoraUsuario` int NOT NULL,
-  PRIMARY KEY (`BitacoraId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+CREATE TABLE `carritocompraclienteanonimo` (
+  `ClienteAnonimoId` varchar(300) NOT NULL,
+  `ProdId` int NOT NULL,
+  `ProdCantidad` int NOT NULL,
+  `ProdPrecioVenta` decimal(9,2) NOT NULL,
+  `ProdFechaIngreso` datetime NOT NULL,
+  PRIMARY KEY (`ClienteAnonimoId`,`ProdId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bitacora`
+-- Dumping data for table `carritocompraclienteanonimo`
 --
 
-LOCK TABLES `bitacora` WRITE;
-/*!40000 ALTER TABLE `bitacora` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bitacora` ENABLE KEYS */;
+LOCK TABLES `carritocompraclienteanonimo` WRITE;
+/*!40000 ALTER TABLE `carritocompraclienteanonimo` DISABLE KEYS */;
+INSERT INTO `carritocompraclienteanonimo` VALUES ('ilnfseesphvm3gscs33tv73u1j',1,2,2300.00,'2021-04-09 18:57:02'),('ilnfseesphvm3gscs33tv73u1j',2,1,3450.00,'2021-04-09 18:57:26'),('og2b638ukv1naqtil4snc33q91',1,1,2300.00,'2021-04-11 14:42:07'),('uo4n1vfbfbrotndtphdrrrsk7m',1,4,2300.00,'2021-04-09 00:59:46'),('uo4n1vfbfbrotndtphdrrrsk7m',2,3,3450.00,'2021-04-09 00:59:57'),('uo4n1vfbfbrotndtphdrrrsk7m',13,1,2070.00,'2021-04-09 02:31:12');
+/*!40000 ALTER TABLE `carritocompraclienteanonimo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-12 22:58:14
+-- Dump completed on 2021-04-12 22:58:12

@@ -78,15 +78,6 @@
                 );
             }
 
-            if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Categorias")) 
-            {
-                $adminNAVIGATION[] = array(
-                    "nav_url"=>"index.php?page=admin_categorias",
-                    "nav_icon"=>"",
-                    "nav_label"=>"Categorías"
-                );
-            }
-
             if (\Utilities\Security::isAuthorized($userID, "Controllers\Admin\Pedidos")) 
             {
                 $adminNAVIGATION[] = array(

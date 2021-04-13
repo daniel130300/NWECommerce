@@ -20,8 +20,11 @@ class Venta extends \Controllers\PrivateController
     private $VentaFecha = "";
     private $VentaISV = "";
     private $VentaEst = "";
-    private $VentaTipoPago = "";
-    private $VentaPagoEnvio = "";
+    private $VentaLinkDevolucion = "";
+    private $VentaLinkOrden = "";
+    private $VentaCantidadTotal = "";
+    private $VentaComisionPayPal = "";
+    private $VentaCantidadNeta = "";
     private $ClienteDireccion = "";
     private $ClienteTelefono = "";
     private $UsuarioNombre = "";
@@ -66,8 +69,11 @@ class Venta extends \Controllers\PrivateController
             $this->VentaFecha = $_data["VentaFecha"];
             $this->VentaISV = $_data["VentaISV"];
             $this->VentaEst = $_data["VentaEst"];
-            $this->VentaTipoPago = $_data["VentaTipoPago"];
-            $this->VentaPagoEnvio = $_data["VentaPagoEnvio"];
+            $this->VentaLinkDevolucion = $_data["VentaLinkDevolucion"];
+            $this->VentaLinkOrden = $_data["VentaLinkOrden"];
+            $this->VentaCantidadTotal = $_data["VentaCantidadTotal"];
+            $this->VentaComisionPayPal = $_data["VentaComisionPayPal"];
+            $this->VentaCantidadNeta = $_data["VentaCantidadNeta"];
             $this->ClienteDireccion = $_data["ClienteDireccion"];
             $this->ClienteTelefono = $_data["ClienteTelefono"];
             $this->UsuarioNombre = $_data["UsuarioNombre"];

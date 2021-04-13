@@ -1,4 +1,4 @@
-<section class="container d-flex align-items-center justify-content-center">
+<section class="container d-flex align-items-center justify-content-center min-vh-100">
     <div class="card my-5 w-100">
         <div class="card-header">
             <h3 class="text-center">{{mode_dsc}}</h3>
@@ -15,7 +15,7 @@
 
             <div class="form-group col-md-10">
                 <label for="ProdNombre">Producto</label>
-                <input type="text" class="form-control" {{readonly}} id="ProdNombre" name="ProdNombre" value="{{ProdNombre}}" maxlength="120" placeholder="Ingrese el nombre del producto" required>
+                <input type="text" class="form-control" {{readonly}} id="ProdNombre" name="ProdNombre" value="{{ProdNombre}}" maxlength="60" placeholder="Ingrese el nombre del producto" required>
             </div>
 
             <div class="form-group col-md-10">

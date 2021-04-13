@@ -3,7 +3,7 @@
 -- Host: localhost    Database: globalshophn
 -- ------------------------------------------------------
 -- Server version	8.0.23
-USE globalshophn;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -28,7 +28,7 @@ CREATE TABLE `funciones` (
   `FuncionEst` char(3) NOT NULL,
   `FuncionTipo` char(3) NOT NULL,
   PRIMARY KEY (`FuncionId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `funciones` (
 
 LOCK TABLES `funciones` WRITE;
 /*!40000 ALTER TABLE `funciones` DISABLE KEYS */;
+INSERT INTO `funciones` VALUES ('Controllers\\Admin\\Admin','Controllers\\Admin\\Admin','ACT','CTR'),('Controllers\\Admin\\Categoria','Controllers\\Admin\\Categoria','ACT','CTR'),('Controllers\\Admin\\Categorias','Controllers\\Admin\\Categorias','ACT','CTR'),('Controllers\\Admin\\FuncionesRoles','Controllers\\Admin\\FuncionesRoles','ACT','CTR'),('Controllers\\Admin\\FuncionRol','Controllers\\Admin\\FuncionRol','ACT','CTR'),('Controllers\\Admin\\Pedido','Controllers\\Admin\\Pedido','ACT','CTR'),('Controllers\\Admin\\Pedidos','Controllers\\Admin\\Pedidos','ACT','CTR'),('Controllers\\Admin\\Producto','Controllers\\Admin\\Producto','ACT','CTR'),('Controllers\\Admin\\Productos','Controllers\\Admin\\Productos','ACT','CTR'),('Controllers\\Admin\\Rol','Controllers\\Admin\\Rol','ACT','CTR'),('Controllers\\Admin\\Roles','Controllers\\Admin\\Roles','ACT','CTR'),('Controllers\\Admin\\RolesUsuarios','Controllers\\Admin\\RolesUsuarios','ACT','CTR'),('Controllers\\Admin\\RolUsuario','Controllers\\Admin\\RolUsuario','ACT','CTR'),('Controllers\\Admin\\Usuario','Controllers\\Admin\\Usuario','ACT','CTR'),('Controllers\\Admin\\Usuarios','Controllers\\Admin\\Usuarios','ACT','CTR'),('Controllers\\Admin\\Venta','Controllers\\Admin\\Venta','ACT','CTR'),('Controllers\\Admin\\Ventas','Controllers\\Admin\\Ventas','ACT','CTR');
 /*!40000 ALTER TABLE `funciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-18  0:43:24
+-- Dump completed on 2021-04-12 22:58:13

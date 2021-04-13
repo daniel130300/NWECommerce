@@ -1,4 +1,4 @@
-<section class="container-fluid">
+<section class="container-fluid min-vh-100">
 
     <h3 class="my-4 text-center">Gestión de Ventas</h3>
 
@@ -19,15 +19,18 @@
         <table class="table">
         <thead class="thead-light">
             <tr>
-            <th class="text-center align-middle">Código</th>
-            <th class="text-center align-middle">Fecha</th>
-            <th class="text-center align-middle">ISV</th>
-            <th class="text-center align-middle">Estado</th>
-            <th class="text-center align-middle">Tipo de Pago</th>
-            <th class="text-center align-middle">Pago de Envío</th>
-            <th class="text-center align-middle">Nombre del Cliente</th>
-            <th class="text-center align-middle">Dirección del Cliente</th>
-            <th class="text-center align-middle">Teléfono del Cliente</th>
+                <th class="text-center align-middle">Código</th>
+                <th class="text-center align-middle">Fecha</th>
+                <th class="text-center align-middle">ISV</th>
+                <th class="text-center align-middle">Estado</th>
+                <th class="text-center align-middle">Nombre del Cliente</th>
+                <th class="text-center align-middle">Dirección del Cliente</th>
+                <th class="text-center align-middle">Teléfono del Cliente</th>
+                <th class="text-center align-middle">Link para Devolución</th>
+                <th class="text-center align-middle">Link para Orden en Paypal</th>
+                <th class="text-center align-middle">Ganancia Bruta</th>
+                <th class="text-center align-middle">Comisión de Paypal</th>
+                <th class="text-center align-middle">Ganancia Neta</th>
             <th class="text-center align-middle"></th>
             </tr>
         </thead>
@@ -38,11 +41,14 @@
                 <td class="text-center align-middle">{{VentaFecha}}</td>
                 <td class="text-center align-middle">{{VentaISV}}</td>
                 <td class="text-center align-middle">{{VentaEst}}</td>
-                <td class="text-center align-middle">{{VentaTipoPago}}</td>
-                <td class="text-center align-middle">{{VentaPagoEnvio}}</td>
                 <td class="text-center align-middle">{{UsuarioNombre}}</td>
                 <td class="text-center align-middle">{{ClienteDireccion}}</td>
                 <td class="text-center align-middle">{{ClienteTelefono}}</td>
+                <td class="text-center align-middle"><a href="{{VentaLinkDevolucion}}">{{VentaLinkDevolucion}}</a></td>
+                <td class="text-center align-middle"><a href="{{VentaLinkOrden}}">{{VentaLinkOrden}}</a></td>
+                <td class="text-center align-middle">{{VentaCantidadTotal}}</td>
+                <td class="text-center align-middle">{{VentaComisionPayPal}}</td>
+                <td class="text-center align-middle">{{VentaCantidadNeta}}</td>
                 <td class="text-center align-middle">
                 <form action="index.php" method="get">
                     <input type="hidden" name="page" value="admin_venta"/>

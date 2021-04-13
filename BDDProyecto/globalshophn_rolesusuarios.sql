@@ -3,7 +3,6 @@
 -- Host: localhost    Database: globalshophn
 -- ------------------------------------------------------
 -- Server version	8.0.23
-USE globalshophn;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +30,7 @@ CREATE TABLE `rolesusuarios` (
   `RolUsuarioExp` datetime NOT NULL,
   PRIMARY KEY (`UsuarioId`,`RolId`),
   KEY `rol_usuario_key_idx` (`RolId`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +39,7 @@ CREATE TABLE `rolesusuarios` (
 
 LOCK TABLES `rolesusuarios` WRITE;
 /*!40000 ALTER TABLE `rolesusuarios` DISABLE KEYS */;
+INSERT INTO `rolesusuarios` VALUES (3,'ADMINISTRADOR','ACT','2021-03-28 00:00:00','2022-03-28 00:00:00'),(18,'ADMINISTRADOR','ACT','2021-03-28 00:00:00','2022-03-28 00:00:00'),(24,'ADMINISTRADOR','ACT','2021-04-08 19:46:15','2026-03-13 00:00:00');
 /*!40000 ALTER TABLE `rolesusuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-18  0:43:24
+-- Dump completed on 2021-04-12 22:58:13

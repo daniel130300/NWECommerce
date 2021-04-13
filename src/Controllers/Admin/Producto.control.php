@@ -133,7 +133,7 @@ class Producto extends \Controllers\PrivateController
                                         else
                                         {
                                             \Dao\Mnt\Media::delete($this->ProdId, $_mediaDB['MediaId']);
-                                            unlink("public/img/productos/".$_mediaDB['MediaDoc']);
+                                            @unlink("public/img/productos/".$_mediaDB['MediaDoc']);
                                         }
                                     }
 

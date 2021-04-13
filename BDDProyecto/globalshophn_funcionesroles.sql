@@ -3,7 +3,7 @@
 -- Host: localhost    Database: globalshophn
 -- ------------------------------------------------------
 -- Server version	8.0.23
-USE globalshophn;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `funcionesroles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `funcionesroles` (
-  `RolesId` varchar(15) NOT NULL,
+  `RolId` varchar(15) NOT NULL,
   `FuncionId` varchar(255) NOT NULL,
   `FuncionRolEst` char(3) NOT NULL,
   `FuncionExp` datetime NOT NULL,
-  PRIMARY KEY (`RolesId`,`FuncionId`),
+  PRIMARY KEY (`RolId`,`FuncionId`),
   KEY `rol_funcion_key_idx` (`FuncionId`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `funcionesroles` (
 
 LOCK TABLES `funcionesroles` WRITE;
 /*!40000 ALTER TABLE `funcionesroles` DISABLE KEYS */;
+INSERT INTO `funcionesroles` VALUES ('ADMINISTRADOR','Controllers\\Admin\\Admin','ACT','2050-12-30 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Categoria','ACT','2050-12-30 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Categorias','ACT','2050-12-30 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\FuncionesRoles','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\FuncionRol','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Pedido','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Pedidos','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Producto','ACT','2026-03-11 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Productos','ACT','2026-03-11 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Rol','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Roles','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\RolesUsuarios','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\RolUsuario','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Usuario','ACT','2050-12-30 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Usuarios','ACT','2050-12-31 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Venta','ACT','2026-03-11 00:00:00'),('ADMINISTRADOR','Controllers\\Admin\\Ventas','ACT','2026-03-11 00:00:00');
 /*!40000 ALTER TABLE `funcionesroles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-18  0:43:23
+-- Dump completed on 2021-04-12 22:58:14

@@ -1,4 +1,4 @@
-<section class="container-fluid">
+<section class="container-fluid min-vh-100">
 
     <h3 class="my-4 text-center">Gestión de Productos</h3>
 

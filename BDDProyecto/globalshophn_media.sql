@@ -3,7 +3,7 @@
 -- Host: localhost    Database: globalshophn
 -- ------------------------------------------------------
 -- Server version	8.0.23
-USE globalshophn;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -26,12 +26,10 @@ CREATE TABLE `media` (
   `MediaId` int NOT NULL AUTO_INCREMENT,
   `MediaDoc` varchar(80) NOT NULL,
   `MediaPath` varchar(150) NOT NULL,
-  `MediaMeta` json NOT NULL,
-  `MediaSize` int NOT NULL,
   `ProdId` int DEFAULT NULL,
   PRIMARY KEY (`MediaId`),
   KEY `IX_Relationship5` (`ProdId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +38,7 @@ CREATE TABLE `media` (
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
+INSERT INTO `media` VALUES (12,'Billetera.jpg','public/img/productos/Billetera.jpg',2),(14,'Dell XP.jpg','public/img/productos/Dell XP.jpg',7),(24,'Rloj US Polo ASSN 2.jpg','public/img/productos/Rloj US Polo ASSN 2.jpg',1),(25,'Rloj US Polo ASSN.jpg','public/img/productos/Rloj US Polo ASSN.jpg',1),(28,'Ps4.png','public/img/productos/Ps4.png',10),(29,'IPhone X.jpg','public/img/productos/IPhone X.jpg',11),(30,'Nintendo Switch.jpg','public/img/productos/Nintendo Switch.jpg',12),(31,'Google Chromecast.jpg','public/img/productos/Google Chromecast.jpg',13),(32,'Apple Watch 2.jpg','public/img/productos/Apple Watch 2.jpg',14),(33,'Apple Watch.jpg','public/img/productos/Apple Watch.jpg',14),(34,'Sony WH-1000XM3(2).jpg','public/img/productos/Sony WH-1000XM3(2).jpg',15),(35,'Sony WH-1000XM3.jpg','public/img/productos/Sony WH-1000XM3.jpg',15),(36,'Kindle(2).jpg','public/img/productos/Kindle(2).jpg',16),(37,'Kindle.jpg','public/img/productos/Kindle.jpg',16),(43,'fitbit(2).jpg','public/img/productos/fitbit(2).jpg',17),(44,'fitbit.png','public/img/productos/fitbit.png',17),(62,'Razer Mouse 1_.jpg','public/img/productos/Razer Mouse 1_.jpg',23),(63,'Razer Mouse 2.jpeg','public/img/productos/Razer Mouse 2.jpeg',23);
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-18  0:43:23
+-- Dump completed on 2021-04-12 22:58:15

@@ -35,7 +35,7 @@
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card h-100">
                 <div class="card-body align-items-center d-flex flex-column justify-content-center">
-                    <a href="index.php?page=visualizarproducto&ProdId={{ProdId}}"><img class="card-img-top mb-4" src="{{MediaPath}}" alt="{{MediaDoc}}" style="width: 200px"></a>
+                    <a href="index.php?page=visualizarproducto&ProdId={{ProdId}}"><img class="card-img-top mb-4" src="{{MediaPath}}" alt="{{MediaDoc}}" style="width: 200px; max-height: 400px;"></a>
                     <h4 class="card-title text-center mb-4">
                         <a href="index.php?page=visualizarproducto&ProdId={{ProdId}}">{{ProdNombre}}</a>
                     </h4>

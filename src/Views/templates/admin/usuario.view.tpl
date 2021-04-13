@@ -1,4 +1,4 @@
-<section class="container d-flex align-items-center justify-content-center">
+<section class="container d-flex align-items-center justify-content-center min-vh-100">
   <div class="card my-5 w-100">
     <div class="card-header">
       <h3 class="text-center">{{mode_dsc}}</h3>
