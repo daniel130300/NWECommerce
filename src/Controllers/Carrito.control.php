@@ -5,7 +5,8 @@ namespace Controllers;
 class Carrito extends \Controllers\PublicController
 {
     private $Items = array();
-    private $Total = "";
+    private $Total = 0.00;
+    private $Subtotal = 0.00;
 
     public function run() :void
     {
@@ -53,12 +54,18 @@ class Carrito extends \Controllers\PublicController
         {
             $this->Items[$key]["ProdPrecioVenta"] = number_format($value["ProdPrecioVenta"], 2);
             $this->Items[$key]["TotalProducto"] = number_format($value["TotalProducto"], 2);
+
+            $precioSinImpuesto = \Utilities\CalculoPrecios::CalcularPrecioSinImpuesto($value["ProdPrecioVenta"]);
+
+            $this->Items[$key]["ProdPrecioSinImpuesto"] = number_format($precioSinImpuesto, 2);
+            $this->Items[$key]["ProdImpuesto"] = number_format(($value["ProdPrecioVenta"] - $precioSinImpuesto), 2);
+            $this->Subtotal += $precioSinImpuesto;
+            $this->Total += $value["ProdPrecioVenta"];
+
         }
 
-        $this->Total = \Dao\Client\CarritoAnonimo::getTotalCarrito(session_id());
-
-        //Reformatear valor desde la base con decimales
-        $this->Total = number_format($this->Total["Total"], 2);
+        $this->Subtotal = number_format($this->Subtotal, 2);
+        $this->Total = number_format($this->Total, 2);
     }
 
     private function eliminarProductoCarritoAnonimo()
@@ -84,17 +91,21 @@ class Carrito extends \Controllers\PublicController
 
         $this->Items = \Dao\Client\CarritoUsuario::getProductosCarritoUsuario($UsuarioId);
 
-        //Reformatear valor desde la base con decimales
         foreach($this->Items as $key => $value)
         {
             $this->Items[$key]["ProdPrecioVenta"] = number_format($value["ProdPrecioVenta"], 2);
             $this->Items[$key]["TotalProducto"] = number_format($value["TotalProducto"], 2);
+
+            $precioSinImpuesto = \Utilities\CalculoPrecios::CalcularPrecioSinImpuesto($value["ProdPrecioVenta"]);
+
+            $this->Items[$key]["ProdPrecioSinImpuesto"] = number_format($precioSinImpuesto, 2);
+            $this->Items[$key]["ProdImpuesto"] = number_format(($value["ProdPrecioVenta"] - $precioSinImpuesto), 2);
+            $this->Subtotal += $precioSinImpuesto;
+            $this->Total += $value["ProdPrecioVenta"];
         }
 
-        $this->Total = \Dao\Client\CarritoUsuario::getTotalCarrito($UsuarioId);
-
-        //Reformatear valor desde la base con decimales
-        $this->Total = number_format($this->Total["Total"], 2);
+        $this->Subtotal = number_format($this->Subtotal, 2);
+        $this->Total = number_format($this->Total, 2);
     }
 
     private function eliminarProductoCarritoUsuario()

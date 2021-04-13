@@ -3,28 +3,32 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th width="40%" class="text-center">Descripción</th>
-                <th width="15%" class="text-center">Cantidad</th>
-                <th width="20%" class="text-center">Precio</th>
-                <th width="20%" class="text-center">Total</th>
-                <th width="20%" class="text-center">Imagen</th>
-                <th width="5%"></th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Cantidad</th>
+                <th class="text-center">Precio sin Impuesto</th>
+                <th class="text-center">Impuesto calculado</th>
+                <th class="text-center">Precio con Impuesto</th>
+                <th class="text-center">Total</th>
+                <th width="15%" class="text-center">Imagen</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {{foreach Items}}
             <tr>
-                <td width="40%" class="align-middle">{{ProdNombre}}</td>
-                <td width="15%" class="text-center align-middle">{{ProdCantidad}}</td>
-                <td width="20%" class="text-center align-middle">{{ProdPrecioVenta}}</td>
-                <td width="20%" class="text-center align-middle">{{TotalProducto}}</td>
-                <td width="20%" class="text-center align-middle">
+                <td class="align-middle">{{ProdNombre}}</td>
+                <td class="text-center align-middle">{{ProdCantidad}}</td>
+                <td class="text-center align-middle">{{ProdPrecioSinImpuesto}}</td>
+                <td class="text-center align-middle">{{ProdImpuesto}}</td>
+                <td class="text-center align-middle">{{ProdPrecioVenta}}</td>
+                <td class="text-center align-middle">{{TotalProducto}}</td>
+                <td width="15%" class="text-center align-middle">
                     <div class="border">
                         <img class="rounded mx-auto d-block" src="{{MediaPath}}" alt="{{MediaDoc}}" width="60%">
                     </div>
                 </td>
 
-                <td width="5%">
+                <td>
                     <form method="POST" action="index.php?page=carrito">
                         <input type="hidden" id="ProdId" name="ProdId" value="{{ProdId}}">
                         <input type="hidden" id="ProdCantidad" name="ProdCantidad" value="{{ProdCantidad}}">
@@ -36,12 +40,15 @@
         </tbody>
     </table>
 
-    <form>
-        <div class="form-group row justify-content-end">
-          <label for="CarritoTotal" class="col-sm-2 col-form-label font-weight-bold">Total</label>
-          <div class="col-sm-2">
-                <input type="text" readonly class="form-control" id="CarritoTotal" value="{{Total}}">
-          </div>
+    <form class="d-flex flex-column align-items-end">
+        <div class="form-group col-md-2">
+            <label for="CarritoSubtotal" class="font-weight-bold">Subtotal</label>
+            <input type="text" readonly class="form-control" id="CarritoSubtotal" value="{{Subtotal}}">
+        </div>
+        
+        <div class="form-group col-md-2">
+            <label for="CarritoTotal" class="font-weight-bold">Total</label>
+            <input type="text" readonly class="form-control" id="CarritoTotal" value="{{Total}}">
         </div>
     </form>
 

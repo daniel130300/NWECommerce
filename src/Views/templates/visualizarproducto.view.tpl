@@ -1,4 +1,4 @@
-<div class="container py-5 mx-auto">
+<div class="container py-5 mx-auto min-vh-100">
 
     <div class="col-md-4 p-0 mb-4">
         <button class="btn btn-primary" onclick="goBack()"><i class="fas fa-arrow-left mx-2"></i>Regresar</button>

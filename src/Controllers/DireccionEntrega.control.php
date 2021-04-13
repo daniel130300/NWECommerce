@@ -11,6 +11,9 @@ class DireccionEntrega extends PublicController
     private $Direccion2 = "";
     private $NumeroTelefonoCelular = "";
 
+    private $hasErrors = false;
+    private $aErrors = array();
+
     public function run() :void
     {
 
@@ -28,10 +31,17 @@ class DireccionEntrega extends PublicController
         }
         else
         {
-            \Utilities\Site::redirectTo("index.php");
+            if(!empty($getProductos))
+            {
+                $dataview = get_object_vars($this);
+                \Utilities\Nav::setNavContext();
+                \Views\Renderer::render("direccionentrega", $dataview, "privatelayout.view.tpl");
+            }
+            else
+            {   
+                \Utilities\Site::redirectToWithMsg("index.php?page=catalogoproductos&PageIndex=1", "No tiene productos en el carrito");
+            }
         }
-        //$dataview = get_object_vars($this);
-            //\Views\Renderer::render("direccionentrega", $dataview);
     }
 
     private function _loadPostData()
@@ -78,6 +88,16 @@ class DireccionEntrega extends PublicController
         }
 
         $this->hasErrors = (count($this->aErrors) > 0);
+
+        if(!$this->hasErrors)
+        {   
+            $direccion = $this->DireccionDepartamento . ", " . $this->DireccionCiudad . ", " . $this->Direccion1 . ", " . $this->Direccion2;  
+
+            $_SESSION["login"]["DireccionUsuario"] = $direccion;
+            $_SESSION["login"]["TelefonoUsuario"] = $this->NumeroTelefonoCelular;
+
+            \Utilities\Site::redirectToWithMsg("index.php?page=checkout_checkout", "Información para entrega guardada con éxito");
+        }
     }
 }
 ?>
