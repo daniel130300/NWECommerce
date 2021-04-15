@@ -1,3 +1,4 @@
+use globalshophn;
 delimiter $
 CREATE EVENT tarea_carrito_anonimo
 ON schedule every 15 minute ON completion preserve

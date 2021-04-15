@@ -4,6 +4,8 @@
 -- ------------------------------------------------------
 -- Server version	8.0.23
 
+use globalshophn;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -39,7 +41,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`UsuarioId`),
   UNIQUE KEY `useremail_UNIQUE` (`UsuarioEmail`) USING BTREE,
   KEY `usertipo` (`UsuarioTipo`,`UsuarioEmail`,`UsuarioId`,`UsuarioEst`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
