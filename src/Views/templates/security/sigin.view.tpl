@@ -37,12 +37,6 @@
           <div class="my-3 text-danger">{{errorPswd}}</div>
         {{endif errorPswd}}
 
-        {{if generalError}}
-        <div class="my-3 text-danger">
-          {{generalError}}
-        </div>
-        {{endif generalError}}
-
         <button type="submit" id="btnSignin" class="btn btn-primary">Crear cuenta</button>
       </form>
     </div>
