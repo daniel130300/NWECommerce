@@ -96,8 +96,8 @@ class VisualizarProducto extends \Controllers\PublicController
         {
             if(!$this->validarCantidadDisponibleProducto())
             {
-                $resultDelete = \Dao\Client\CarritoAnonimo::deleteProductoCarritoAnonimo(session_id(), $this->ProdId);
                 $resultUpdate = \Dao\Client\CarritoAnonimo::sumarProductoInventarioAnonimo($this->ProdId, $_comprobar["ProdCantidad"]);
+                $resultDelete = \Dao\Client\CarritoAnonimo::deleteProductoCarritoAnonimo(session_id(), $this->ProdId);
 
                 if($resultDelete && $resultUpdate)
                 {
@@ -123,9 +123,9 @@ class VisualizarProducto extends \Controllers\PublicController
         {
             if(!$this->validarCantidadDisponibleProducto())
             {
-                $resultDelete = \Dao\Client\CarritoUsuario::deleteProductoCarritoUsuario($UsuarioId, $this->ProdId);
                 $resultUpdate = \Dao\Client\CarritoUsuario::sumarProductoInventarioAnonimo($this->ProdId, $_comprobar["ProdCantidad"]);
-                
+                $resultDelete = \Dao\Client\CarritoUsuario::deleteProductoCarritoUsuario($UsuarioId, $this->ProdId);
+               
                 if($resultDelete && $resultUpdate)
                 {
                     $this->ingresarProductoCarritoUsuario($UsuarioId);
